@@ -71,6 +71,7 @@ class Claude:
             len(tools) if tools else 0,
             thinking,
         )
+        logger.debug("Claude raw request:\n%s", json.dumps(params, indent=2, default=str))
 
         message = self.client.messages.create(**params)
 
@@ -81,18 +82,6 @@ class Claude:
             message.usage.output_tokens,
         )
 
-        for block in message.content:
-            if block.type == "text":
-                logger.debug("  [text] %s", block.text)
-            elif block.type == "tool_use":
-                logger.debug("  [tool_use] %s | %s", block.name, json.dumps(block.input))
-            elif block.type == "thinking":
-                logger.debug(
-                    "  [thinking] %.500s%s",
-                    block.thinking,
-                    "..." if len(block.thinking) > 500 else "",
-                )
-            else:
-                logger.debug("  [%s]", block.type)
+        logger.debug("Claude raw response:\n%s", message.model_dump_json(indent=2))
 
         return message
