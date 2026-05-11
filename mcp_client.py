@@ -1,9 +1,12 @@
 import sys
 import asyncio
+import logging
 from typing import Optional, Any
 from contextlib import AsyncExitStack
 from mcp import ClientSession, StdioServerParameters, types
 from mcp.client.stdio import stdio_client
+
+logger = logging.getLogger(__name__)
 
 
 class MCPClient:
@@ -20,6 +23,7 @@ class MCPClient:
         self._exit_stack: AsyncExitStack = AsyncExitStack()
 
     async def connect(self):
+        logger.debug("Connecting to MCP server: %s %s", self._command, " ".join(self._args))
         server_params = StdioServerParameters(
             command=self._command,
             args=self._args,
@@ -33,6 +37,7 @@ class MCPClient:
             ClientSession(_stdio, _write)
         )
         await self._session.initialize()
+        logger.debug("MCP server connected: %s %s", self._command, " ".join(self._args))
 
     def session(self) -> ClientSession:
         if self._session is None:
@@ -43,11 +48,13 @@ class MCPClient:
 
     async def list_tools(self) -> list[types.Tool]:
         result = await self.session().list_tools()
+        logger.debug("list_tools → %s", [t.name for t in result.tools])
         return result.tools
 
     async def call_tool(
         self, tool_name: str, tool_input: dict
     ) -> types.CallToolResult | None:
+        logger.debug("call_tool: %s | input: %s", tool_name, tool_input)
         return await self.session().call_tool(tool_name, tool_input)
 
     async def list_prompts(self) -> list[types.Prompt]:

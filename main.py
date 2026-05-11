@@ -1,14 +1,19 @@
 import asyncio
 import sys
 import os
+import logging
 from dotenv import load_dotenv
 from contextlib import AsyncExitStack
 
 from mcp_client import MCPClient
 from core.claude import Claude
+from core.logging_config import setup_logging
 
 from core.cli_chat import CliChat
 from core.cli import CliApp
+
+setup_logging()
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -24,6 +29,9 @@ assert anthropic_api_key, (
 
 
 async def main():
+    logger.info("Starting MCP Chat")
+    logger.info("Claude model: %s", claude_model)
+
     claude_service = Claude(model=claude_model)
 
     server_scripts = sys.argv[1:]
@@ -40,6 +48,7 @@ async def main():
             MCPClient(command=command, args=args)
         )
         clients["doc_client"] = doc_client
+        logger.info("Connected MCP client: doc_client (%s %s)", command, " ".join(args))
 
         for i, server_script in enumerate(server_scripts):
             client_id = f"client_{i}_{server_script}"
@@ -47,6 +56,7 @@ async def main():
                 MCPClient(command="uv", args=["run", server_script])
             )
             clients[client_id] = client
+            logger.info("Connected MCP client: %s (uv run %s)", client_id, server_script)
 
         chat = CliChat(
             doc_client=doc_client,

@@ -1,5 +1,8 @@
+import logging
 from anthropic import Anthropic
 from anthropic.types import Message
+
+logger = logging.getLogger(__name__)
 
 
 class Claude:
@@ -60,5 +63,21 @@ class Claude:
         if system:
             params["system"] = system
 
+        logger.debug(
+            "Calling Claude — model=%s, messages=%d, tools=%d, thinking=%s",
+            self.model,
+            len(messages),
+            len(tools) if tools else 0,
+            thinking,
+        )
+
         message = self.client.messages.create(**params)
+
+        logger.debug(
+            "Claude response — stop_reason=%s, in=%d out=%d tokens",
+            message.stop_reason,
+            message.usage.input_tokens,
+            message.usage.output_tokens,
+        )
+
         return message

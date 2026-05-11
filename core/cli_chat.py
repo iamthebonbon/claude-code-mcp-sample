@@ -1,3 +1,4 @@
+import logging
 from typing import List, Tuple
 from mcp.types import Prompt, PromptMessage
 from anthropic.types import MessageParam
@@ -5,6 +6,8 @@ from anthropic.types import MessageParam
 from core.chat import Chat
 from core.claude import Claude
 from mcp_client import MCPClient
+
+logger = logging.getLogger(__name__)
 
 
 class CliChat(Chat):
@@ -34,6 +37,7 @@ class CliChat(Chat):
 
     async def _extract_resources(self, query: str) -> str:
         mentions = [word[1:] for word in query.split() if word.startswith("@")]
+        logger.debug("@-mentions in query: %s", mentions)
 
         doc_ids = await self.list_docs_ids()
         mentioned_docs: list[Tuple[str, str]] = []
@@ -42,6 +46,10 @@ class CliChat(Chat):
             if doc_id in mentions:
                 content = await self.get_doc_content(doc_id)
                 mentioned_docs.append((doc_id, content))
+
+        resolved = [doc_id for doc_id, _ in mentioned_docs]
+        if resolved:
+            logger.info("Resolved document resources: %s", resolved)
 
         return "".join(
             f'\n<document id="{doc_id}">\n{content}\n</document>\n'
@@ -54,9 +62,11 @@ class CliChat(Chat):
 
         words = query.split()
         command = words[0].replace("/", "")
+        doc_id = words[1] if len(words) > 1 else ""
+        logger.info("Processing command: /%s doc_id=%s", command, doc_id)
 
         messages = await self.doc_client.get_prompt(
-            command, {"doc_id": words[1]}
+            command, {"doc_id": doc_id}
         )
 
         self.messages += convert_prompt_messages_to_message_params(messages)
@@ -64,9 +74,12 @@ class CliChat(Chat):
 
     async def _process_query(self, query: str):
         if await self._process_command(query):
+            logger.debug("Query handled as command")
             return
 
         added_resources = await self._extract_resources(query)
+        has_resources = bool(added_resources.strip())
+        logger.debug("Query processed — injected_docs=%s", has_resources)
 
         prompt = f"""
         The user has a question:
@@ -82,7 +95,7 @@ class CliChat(Chat):
         Note the user's query might contain references to documents like "@report.docx". The "@" is only
         included as a way of mentioning the doc. The actual name of the document would be "report.docx".
         If the document content is included in this prompt, you don't need to use an additional tool to read the document.
-        Answer the user's question directly and concisely. Start with the exact information they need. 
+        Answer the user's question directly and concisely. Start with the exact information they need.
         Don't refer to or mention the provided context in any way - just use it to inform your answer.
         """
 

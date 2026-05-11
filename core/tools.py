@@ -1,8 +1,11 @@
 import json
+import logging
 from typing import Optional, Literal, List
 from mcp.types import CallToolResult, Tool, TextContent
 from mcp_client import MCPClient
 from anthropic.types import Message, ToolResultBlockParam
+
+logger = logging.getLogger(__name__)
 
 
 class ToolManager:
@@ -20,6 +23,8 @@ class ToolManager:
                 }
                 for t in tool_models
             ]
+        tool_names = [t["name"] for t in tools]
+        logger.debug("Available tools (%d): %s", len(tools), tool_names)
         return tools
 
     @classmethod
@@ -63,17 +68,27 @@ class ToolManager:
             tool_name = tool_request.name
             tool_input = tool_request.input
 
+            input_preview = json.dumps(tool_input)
+            logger.info(
+                "Executing tool: %s | input: %.300s%s",
+                tool_name,
+                input_preview,
+                "..." if len(input_preview) > 300 else "",
+            )
+
             client = await cls._find_client_with_tool(
                 list(clients.values()), tool_name
             )
 
             if not client:
+                logger.warning("Tool not found in any client: %s", tool_name)
                 tool_result_part = cls._build_tool_result_part(
                     tool_use_id, "Could not find that tool", "error"
                 )
                 tool_result_blocks.append(tool_result_part)
                 continue
 
+            tool_output = None
             try:
                 tool_output: CallToolResult | None = await client.call_tool(
                     tool_name, tool_input
@@ -85,16 +100,23 @@ class ToolManager:
                     item.text for item in items if isinstance(item, TextContent)
                 ]
                 content_json = json.dumps(content_list)
+                is_error = bool(tool_output and tool_output.isError)
+                status = "error" if is_error else "success"
+                logger.info(
+                    "Tool %s → %s | preview: %.100s%s",
+                    tool_name,
+                    status,
+                    content_json,
+                    "..." if len(content_json) > 100 else "",
+                )
                 tool_result_part = cls._build_tool_result_part(
                     tool_use_id,
                     content_json,
-                    "error"
-                    if tool_output and tool_output.isError
-                    else "success",
+                    status,
                 )
             except Exception as e:
                 error_message = f"Error executing tool '{tool_name}': {e}"
-                print(error_message)
+                logger.error(error_message)
                 tool_result_part = cls._build_tool_result_part(
                     tool_use_id,
                     json.dumps({"error": error_message}),

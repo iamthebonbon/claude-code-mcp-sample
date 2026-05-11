@@ -1,0 +1,27 @@
+2026-05-11 20:24:21,867 [DEBUG   ] mcp.server.lowlevel.server: Initializing server 'DocumentMCP'
+2026-05-11 20:24:21,867 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ListToolsRequest
+2026-05-11 20:24:21,867 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for CallToolRequest
+2026-05-11 20:24:21,867 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ListResourcesRequest
+2026-05-11 20:24:21,867 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ReadResourceRequest
+2026-05-11 20:24:21,867 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for PromptListRequest
+2026-05-11 20:24:21,867 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for GetPromptRequest
+2026-05-11 20:24:21,867 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ListResourceTemplatesRequest
+2026-05-11 20:24:21,871 [DEBUG   ] asyncio: Using selector: KqueueSelector
+2026-05-11 20:24:21,880 [DEBUG   ] mcp.server.lowlevel.server: Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-05-11 20:24:47,757 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x108a302d0>
+2026-05-11 20:24:47,757 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-11 20:24:47,758 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-11 20:24:47,758 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-11 20:24:50,062 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x108a30cd0>
+2026-05-11 20:24:50,062 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-11 20:24:50,062 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-11 20:24:50,062 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-11 20:24:50,063 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x108933490>
+2026-05-11 20:24:50,063 [INFO    ] mcp.server.lowlevel.server: Processing request of type CallToolRequest
+2026-05-11 20:24:50,063 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type CallToolRequest
+2026-05-11 20:24:50,063 [INFO    ] __main__: read_doc_contents: report.pdf
+2026-05-11 20:24:50,063 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-11 20:24:50,064 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x1089335c0>
+2026-05-11 20:24:50,064 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-11 20:24:50,064 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-11 20:24:50,064 [DEBUG   ] mcp.server.lowlevel.server: Response sent

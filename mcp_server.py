@@ -1,7 +1,18 @@
+import logging
+import os
 from pydantic import Field
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("DocumentMCP", log_level="ERROR")
+os.makedirs("logs", exist_ok=True)
+_handler = logging.FileHandler("logs/mcp_server.log")
+_handler.setLevel(logging.DEBUG)
+_handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)-8s] %(name)s: %(message)s"))
+logging.getLogger().addHandler(_handler)
+logging.getLogger().setLevel(logging.DEBUG)
+
+logger = logging.getLogger(__name__)
+
+mcp = FastMCP("DocumentMCP", log_level="WARNING")
 
 docs = {
     "deposition.md": "This deposition covers the testimony of Angela Smith, P.E.",
@@ -20,8 +31,9 @@ def read_document(
     doc_id: str = Field(description="Id of the document to read")
 ):
     if doc_id not in docs:
+        logger.warning("read_doc_contents: doc not found — %s", doc_id)
         raise ValueError(f"Doc with id {doc_id} not found")
-    
+    logger.info("read_doc_contents: %s", doc_id)
     return docs[doc_id]
 
 @mcp.tool(
@@ -34,8 +46,14 @@ def edit_document(
     new_str: str = Field(description="The new text to insert in place of the old text.")
 ):
     if doc_id not in docs:
+        logger.warning("edit_document: doc not found — %s", doc_id)
         raise ValueError(f"Doc with id {doc_id} not found")
-    
+    logger.info(
+        "edit_document: %s | '%.60s%s' → '%.60s%s'",
+        doc_id,
+        old_str, "..." if len(old_str) > 60 else "",
+        new_str, "..." if len(new_str) > 60 else "",
+    )
     docs[doc_id] = docs[doc_id].replace(old_str, new_str)
 # TODO: Write a tool to edit a doc
 # TODO: Write a resource to return all doc id's
