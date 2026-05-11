@@ -1,3 +1,4 @@
+import json
 import logging
 from anthropic import Anthropic
 from anthropic.types import Message
@@ -79,5 +80,19 @@ class Claude:
             message.usage.input_tokens,
             message.usage.output_tokens,
         )
+
+        for block in message.content:
+            if block.type == "text":
+                logger.debug("  [text] %s", block.text)
+            elif block.type == "tool_use":
+                logger.debug("  [tool_use] %s | %s", block.name, json.dumps(block.input))
+            elif block.type == "thinking":
+                logger.debug(
+                    "  [thinking] %.500s%s",
+                    block.thinking,
+                    "..." if len(block.thinking) > 500 else "",
+                )
+            else:
+                logger.debug("  [%s]", block.type)
 
         return message
