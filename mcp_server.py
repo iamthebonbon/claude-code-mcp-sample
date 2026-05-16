@@ -4,8 +4,9 @@ from pydantic import Field
 from mcp.server.fastmcp import FastMCP
 from mcp.server.fastmcp.prompts import base
 
-os.makedirs("logs", exist_ok=True)
-_handler = logging.FileHandler("logs/mcp_server.log")
+_log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs")
+os.makedirs(_log_dir, exist_ok=True)
+_handler = logging.FileHandler(os.path.join(_log_dir, "mcp_server.log"))
 _handler.setLevel(logging.DEBUG)
 _handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)-8s] %(name)s: %(message)s"))
 logging.getLogger().addHandler(_handler)

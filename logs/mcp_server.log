@@ -750,3 +750,423 @@ These financials outline t...'
 2026-05-16 20:02:23,736 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
 2026-05-16 20:02:24,255 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
 2026-05-16 20:02:24,256 [DEBUG   ] mcp.server.streamable_http: Closing standalone SSE writer
+2026-05-16 20:05:05,627 [DEBUG   ] mcp.server.streamable_http_manager: Creating new transport
+2026-05-16 20:05:05,628 [INFO    ] mcp.server.streamable_http_manager: Created new transport with session ID: e1aae64df4604949b6e63bea0d3eb482
+2026-05-16 20:05:05,629 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:05:05,629 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"experimental":{},"prompts":{"listChanged":false},"resources":{"subscribe":false,"listChanged":false},"tools":{"listChanged":false}},"serverInfo":{"name":"DocumentMCP","version":"1.26.0"}}}\r\n\r\n'
+2026-05-16 20:05:05,630 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:05:05,639 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:05:05,639 [DEBUG   ] mcp.server.lowlevel.server: Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-05-16 20:05:05,642 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:05:05,643 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:05:05,643 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d04fe30>
+2026-05-16 20:05:05,643 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-16 20:05:05,643 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-16 20:05:05,643 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:05:05,643 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:05:05,644 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:05:05,644 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d115a90>
+2026-05-16 20:05:05,644 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:05:05,644 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListPromptsRequest
+2026-05-16 20:05:05,644 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListPromptsRequest
+2026-05-16 20:05:05,644 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"read_doc_contents","description":"Read the contents of a document and return it as a string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document to read","title":"Doc Id","type":"string"}},"required":["doc_id"],"title":"read_documentArguments","type":"object"}},{"name":"read_bonbon_data","description":"Read bonbon data and return it as a string when user requests it.","inputSchema":{"properties":{},"title":"read_bonbon_dataArguments","type":"object"}},{"name":"edit_document","description":"Edit a document by replacing a string in the documents content with a new string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document that will be edited","title":"Doc Id","type":"string"},"old_str":{"description":"The text to replace. Must match exactly, including whitespace.","title":"Old Str","type":"string"},"new_str":{"description":"The new text to insert in place of the old text.","title":"New Str","type":"string"}},"required":["doc_id","old_str","new_str"],"title":"edit_documentArguments","type":"object"}}]}}\r\n\r\n'
+2026-05-16 20:05:05,644 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:05:05,644 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d04fe30>
+2026-05-16 20:05:05,644 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourcesRequest
+2026-05-16 20:05:05,644 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourcesRequest
+2026-05-16 20:05:05,644 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing resources
+2026-05-16 20:05:05,645 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:05:05,645 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:05:05,645 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:05:05,645 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":2,"result":{"prompts":[{"name":"format","description":"Rewrites the contents of the document in Markdown format.","arguments":[{"name":"doc_id","description":"Id of the document to format","required":true}]}]}}\r\n\r\n'
+2026-05-16 20:05:05,645 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:05:05,645 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":3,"result":{"resources":[{"name":"list_docs","uri":"docs://documents","description":"","mimeType":"application/json"}]}}\r\n\r\n'
+2026-05-16 20:05:05,645 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:05:05,645 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:05:05,874 [DEBUG   ] mcp.server.lowlevel.server: Initializing server 'DocumentMCP'
+2026-05-16 20:05:05,874 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ListToolsRequest
+2026-05-16 20:05:05,874 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for CallToolRequest
+2026-05-16 20:05:05,874 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ListResourcesRequest
+2026-05-16 20:05:05,874 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ReadResourceRequest
+2026-05-16 20:05:05,874 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for PromptListRequest
+2026-05-16 20:05:05,874 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for GetPromptRequest
+2026-05-16 20:05:05,874 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ListResourceTemplatesRequest
+2026-05-16 20:05:05,877 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Adding resource
+2026-05-16 20:05:05,882 [DEBUG   ] asyncio: Using selector: KqueueSelector
+2026-05-16 20:05:05,885 [DEBUG   ] mcp.server.lowlevel.server: Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-05-16 20:05:05,885 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x108ecc410>
+2026-05-16 20:05:05,885 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-16 20:05:05,885 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-16 20:05:05,885 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:05:05,885 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x108ecc2d0>
+2026-05-16 20:05:05,886 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListPromptsRequest
+2026-05-16 20:05:05,886 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListPromptsRequest
+2026-05-16 20:05:05,886 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x108db6fd0>
+2026-05-16 20:05:05,886 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourcesRequest
+2026-05-16 20:05:05,886 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourcesRequest
+2026-05-16 20:05:05,886 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing resources
+2026-05-16 20:05:05,886 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:05:05,886 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:05:20,644 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:05:20.644313+00:00\r\n\r\n'
+2026-05-16 20:05:35,646 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:05:35.646015+00:00\r\n\r\n'
+2026-05-16 20:05:50,648 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:05:50.648107+00:00\r\n\r\n'
+2026-05-16 20:06:01,180 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x108db6d70>
+2026-05-16 20:06:01,180 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourceTemplatesRequest
+2026-05-16 20:06:01,180 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourceTemplatesRequest
+2026-05-16 20:06:01,180 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing templates
+2026-05-16 20:06:01,180 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:06:01,200 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:06:01,200 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d115770>
+2026-05-16 20:06:01,200 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourceTemplatesRequest
+2026-05-16 20:06:01,200 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourceTemplatesRequest
+2026-05-16 20:06:01,200 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing templates
+2026-05-16 20:06:01,201 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:06:01,201 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:06:01,201 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":4,"result":{"resourceTemplates":[{"name":"fetch_doc","uriTemplate":"docs://documents/{doc_id}","description":"","mimeType":"text/plain"}]}}\r\n\r\n'
+2026-05-16 20:06:01,201 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:06:05,650 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:06:05.650134+00:00\r\n\r\n'
+2026-05-16 20:06:20,652 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:06:20.652256+00:00\r\n\r\n'
+2026-05-16 20:06:35,654 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:06:35.654030+00:00\r\n\r\n'
+2026-05-16 20:06:50,656 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:06:50.656068+00:00\r\n\r\n'
+2026-05-16 20:07:05,657 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:07:05.657808+00:00\r\n\r\n'
+2026-05-16 20:07:20,658 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:07:20.658612+00:00\r\n\r\n'
+2026-05-16 20:07:35,660 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:07:35.660391+00:00\r\n\r\n'
+2026-05-16 20:07:50,662 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:07:50.661944+00:00\r\n\r\n'
+2026-05-16 20:08:05,665 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:08:05.664966+00:00\r\n\r\n'
+2026-05-16 20:08:20,667 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:08:20.667319+00:00\r\n\r\n'
+2026-05-16 20:08:35,669 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:08:35.669274+00:00\r\n\r\n'
+2026-05-16 20:08:50,671 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:08:50.671081+00:00\r\n\r\n'
+2026-05-16 20:09:05,673 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:09:05.673348+00:00\r\n\r\n'
+2026-05-16 20:09:20,675 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:09:20.675448+00:00\r\n\r\n'
+2026-05-16 20:09:35,677 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:09:35.677245+00:00\r\n\r\n'
+2026-05-16 20:09:50,678 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:09:50.678487+00:00\r\n\r\n'
+2026-05-16 20:10:05,680 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:10:05.680062+00:00\r\n\r\n'
+2026-05-16 20:10:20,681 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:10:20.681736+00:00\r\n\r\n'
+2026-05-16 20:10:22,013 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:10:22,014 [DEBUG   ] mcp.server.streamable_http: Closing standalone SSE writer
+2026-05-16 20:10:22,057 [DEBUG   ] mcp.server.streamable_http_manager: Creating new transport
+2026-05-16 20:10:22,057 [INFO    ] mcp.server.streamable_http_manager: Created new transport with session ID: c279ed7513fd43dca17648d0a5b08cd5
+2026-05-16 20:10:22,059 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:10:22,059 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"experimental":{},"prompts":{"listChanged":false},"resources":{"subscribe":false,"listChanged":false},"tools":{"listChanged":false}},"serverInfo":{"name":"DocumentMCP","version":"1.26.0"}}}\r\n\r\n'
+2026-05-16 20:10:22,059 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:10:22,062 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:10:22,063 [DEBUG   ] mcp.server.lowlevel.server: Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-05-16 20:10:22,068 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:10:22,069 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:10:22,070 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d04f390>
+2026-05-16 20:10:22,070 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-16 20:10:22,070 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-16 20:10:22,070 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:10:22,070 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:10:22,070 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:10:22,070 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d115db0>
+2026-05-16 20:10:22,071 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:10:22,071 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListPromptsRequest
+2026-05-16 20:10:22,071 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListPromptsRequest
+2026-05-16 20:10:22,071 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"read_doc_contents","description":"Read the contents of a document and return it as a string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document to read","title":"Doc Id","type":"string"}},"required":["doc_id"],"title":"read_documentArguments","type":"object"}},{"name":"read_bonbon_data","description":"Read bonbon data and return it as a string when user requests it.","inputSchema":{"properties":{},"title":"read_bonbon_dataArguments","type":"object"}},{"name":"edit_document","description":"Edit a document by replacing a string in the documents content with a new string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document that will be edited","title":"Doc Id","type":"string"},"old_str":{"description":"The text to replace. Must match exactly, including whitespace.","title":"Old Str","type":"string"},"new_str":{"description":"The new text to insert in place of the old text.","title":"New Str","type":"string"}},"required":["doc_id","old_str","new_str"],"title":"edit_documentArguments","type":"object"}}]}}\r\n\r\n'
+2026-05-16 20:10:22,071 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:10:22,071 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d04f390>
+2026-05-16 20:10:22,071 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourcesRequest
+2026-05-16 20:10:22,071 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourcesRequest
+2026-05-16 20:10:22,071 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing resources
+2026-05-16 20:10:22,071 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:10:22,071 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:10:22,071 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:10:22,071 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":2,"result":{"prompts":[{"name":"format","description":"Rewrites the contents of the document in Markdown format.","arguments":[{"name":"doc_id","description":"Id of the document to format","required":true}]}]}}\r\n\r\n'
+2026-05-16 20:10:22,071 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:10:22,071 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":3,"result":{"resources":[{"name":"list_docs","uri":"docs://documents","description":"","mimeType":"application/json"}]}}\r\n\r\n'
+2026-05-16 20:10:22,072 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:10:22,072 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:10:22,558 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:10:22,558 [DEBUG   ] mcp.server.streamable_http: Closing standalone SSE writer
+2026-05-16 20:10:49,679 [DEBUG   ] mcp.server.streamable_http_manager: Creating new transport
+2026-05-16 20:10:49,679 [INFO    ] mcp.server.streamable_http_manager: Created new transport with session ID: db41a81fecb34fc2b2395f37d619803a
+2026-05-16 20:10:49,681 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:10:49,681 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"experimental":{},"prompts":{"listChanged":false},"resources":{"subscribe":false,"listChanged":false},"tools":{"listChanged":false}},"serverInfo":{"name":"DocumentMCP","version":"1.26.0"}}}\r\n\r\n'
+2026-05-16 20:10:49,681 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:10:49,690 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:10:49,690 [DEBUG   ] mcp.server.lowlevel.server: Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-05-16 20:10:49,693 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:10:49,693 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:10:49,693 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d04ead0>
+2026-05-16 20:10:49,693 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-16 20:10:49,693 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-16 20:10:49,694 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:10:49,694 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:10:49,694 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:10:49,694 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:10:49,694 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"read_doc_contents","description":"Read the contents of a document and return it as a string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document to read","title":"Doc Id","type":"string"}},"required":["doc_id"],"title":"read_documentArguments","type":"object"}},{"name":"read_bonbon_data","description":"Read bonbon data and return it as a string when user requests it.","inputSchema":{"properties":{},"title":"read_bonbon_dataArguments","type":"object"}},{"name":"edit_document","description":"Edit a document by replacing a string in the documents content with a new string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document that will be edited","title":"Doc Id","type":"string"},"old_str":{"description":"The text to replace. Must match exactly, including whitespace.","title":"Old Str","type":"string"},"new_str":{"description":"The new text to insert in place of the old text.","title":"New Str","type":"string"}},"required":["doc_id","old_str","new_str"],"title":"edit_documentArguments","type":"object"}}]}}\r\n\r\n'
+2026-05-16 20:10:49,694 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d116850>
+2026-05-16 20:10:49,694 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListPromptsRequest
+2026-05-16 20:10:49,694 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListPromptsRequest
+2026-05-16 20:10:49,694 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:10:49,694 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d04ead0>
+2026-05-16 20:10:49,694 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:10:49,695 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourcesRequest
+2026-05-16 20:10:49,695 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourcesRequest
+2026-05-16 20:10:49,695 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing resources
+2026-05-16 20:10:49,695 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:10:49,695 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:10:49,695 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":2,"result":{"prompts":[{"name":"format","description":"Rewrites the contents of the document in Markdown format.","arguments":[{"name":"doc_id","description":"Id of the document to format","required":true}]}]}}\r\n\r\n'
+2026-05-16 20:10:49,695 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:10:49,695 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":3,"result":{"resources":[{"name":"list_docs","uri":"docs://documents","description":"","mimeType":"application/json"}]}}\r\n\r\n'
+2026-05-16 20:10:49,695 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:10:49,695 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:10:49,925 [DEBUG   ] mcp.server.lowlevel.server: Initializing server 'DocumentMCP'
+2026-05-16 20:10:49,925 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ListToolsRequest
+2026-05-16 20:10:49,925 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for CallToolRequest
+2026-05-16 20:10:49,925 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ListResourcesRequest
+2026-05-16 20:10:49,925 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ReadResourceRequest
+2026-05-16 20:10:49,925 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for PromptListRequest
+2026-05-16 20:10:49,925 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for GetPromptRequest
+2026-05-16 20:10:49,925 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ListResourceTemplatesRequest
+2026-05-16 20:10:49,928 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Adding resource
+2026-05-16 20:10:49,934 [DEBUG   ] asyncio: Using selector: KqueueSelector
+2026-05-16 20:10:49,936 [DEBUG   ] mcp.server.lowlevel.server: Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-05-16 20:10:49,936 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10ab4c410>
+2026-05-16 20:10:49,937 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-16 20:10:49,937 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-16 20:10:49,937 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:10:49,937 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10ab4c2d0>
+2026-05-16 20:10:49,937 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListPromptsRequest
+2026-05-16 20:10:49,937 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListPromptsRequest
+2026-05-16 20:10:49,937 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10aa3afd0>
+2026-05-16 20:10:49,937 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourcesRequest
+2026-05-16 20:10:49,937 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourcesRequest
+2026-05-16 20:10:49,937 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing resources
+2026-05-16 20:10:49,937 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:10:49,938 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:11:04,694 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:11:04.694649+00:00\r\n\r\n'
+2026-05-16 20:11:19,696 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:11:19.696478+00:00\r\n\r\n'
+2026-05-16 20:11:34,698 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:11:34.698672+00:00\r\n\r\n'
+2026-05-16 20:11:48,510 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10aa3b490>
+2026-05-16 20:11:48,510 [INFO    ] mcp.server.lowlevel.server: Processing request of type CallToolRequest
+2026-05-16 20:11:48,510 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type CallToolRequest
+2026-05-16 20:11:48,510 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:11:49,700 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:11:49.700420+00:00\r\n\r\n'
+2026-05-16 20:11:59,554 [DEBUG   ] mcp.server.streamable_http_manager: Creating new transport
+2026-05-16 20:11:59,554 [INFO    ] mcp.server.streamable_http_manager: Created new transport with session ID: 3885b69fd4524981bae0bf1936f242c8
+2026-05-16 20:11:59,555 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:11:59,555 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"experimental":{},"prompts":{"listChanged":false},"resources":{"subscribe":false,"listChanged":false},"tools":{"listChanged":false}},"serverInfo":{"name":"DocumentMCP","version":"1.26.0"}}}\r\n\r\n'
+2026-05-16 20:11:59,555 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:11:59,564 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:11:59,564 [DEBUG   ] mcp.server.lowlevel.server: Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-05-16 20:11:59,565 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:11:59,565 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:11:59,566 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d04de50>
+2026-05-16 20:11:59,566 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:11:59,566 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:11:59,566 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-16 20:11:59,566 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-16 20:11:59,566 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:11:59,567 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d117110>
+2026-05-16 20:11:59,567 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListPromptsRequest
+2026-05-16 20:11:59,567 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListPromptsRequest
+2026-05-16 20:11:59,567 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:11:59,567 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:11:59,567 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d04de50>
+2026-05-16 20:11:59,567 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"read_doc_contents","description":"Read the contents of a document and return it as a string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document to read","title":"Doc Id","type":"string"}},"required":["doc_id"],"title":"read_documentArguments","type":"object"}},{"name":"read_bonbon_data","description":"Read bonbon data and return it as a string when user requests it.","inputSchema":{"properties":{},"title":"read_bonbon_dataArguments","type":"object"}},{"name":"edit_document","description":"Edit a document by replacing a string in the documents content with a new string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document that will be edited","title":"Doc Id","type":"string"},"old_str":{"description":"The text to replace. Must match exactly, including whitespace.","title":"Old Str","type":"string"},"new_str":{"description":"The new text to insert in place of the old text.","title":"New Str","type":"string"}},"required":["doc_id","old_str","new_str"],"title":"edit_documentArguments","type":"object"}}]}}\r\n\r\n'
+2026-05-16 20:11:59,567 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourcesRequest
+2026-05-16 20:11:59,567 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourcesRequest
+2026-05-16 20:11:59,567 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing resources
+2026-05-16 20:11:59,567 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:11:59,567 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:11:59,567 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:11:59,567 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":2,"result":{"prompts":[{"name":"format","description":"Rewrites the contents of the document in Markdown format.","arguments":[{"name":"doc_id","description":"Id of the document to format","required":true}]}]}}\r\n\r\n'
+2026-05-16 20:11:59,567 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:11:59,568 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":3,"result":{"resources":[{"name":"list_docs","uri":"docs://documents","description":"","mimeType":"application/json"}]}}\r\n\r\n'
+2026-05-16 20:11:59,568 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:11:59,568 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:12:04,702 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:12:04.701978+00:00\r\n\r\n'
+2026-05-16 20:12:05,785 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:12:05,785 [DEBUG   ] mcp.server.streamable_http: Closing standalone SSE writer
+2026-05-16 20:12:05,815 [DEBUG   ] mcp.server.streamable_http_manager: Creating new transport
+2026-05-16 20:12:05,815 [INFO    ] mcp.server.streamable_http_manager: Created new transport with session ID: 6b1ca52c88d0457792599ce310b40b59
+2026-05-16 20:12:05,817 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:12:05,817 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"experimental":{},"prompts":{"listChanged":false},"resources":{"subscribe":false,"listChanged":false},"tools":{"listChanged":false}},"serverInfo":{"name":"DocumentMCP","version":"1.26.0"}}}\r\n\r\n'
+2026-05-16 20:12:05,817 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:12:05,823 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:12:05,824 [DEBUG   ] mcp.server.lowlevel.server: Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-05-16 20:12:05,827 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:12:05,827 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:12:05,828 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d117070>
+2026-05-16 20:12:05,828 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-16 20:12:05,828 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-16 20:12:05,828 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:12:05,828 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:12:05,828 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:12:05,829 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:12:05,829 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d117a70>
+2026-05-16 20:12:05,829 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"read_doc_contents","description":"Read the contents of a document and return it as a string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document to read","title":"Doc Id","type":"string"}},"required":["doc_id"],"title":"read_documentArguments","type":"object"}},{"name":"read_bonbon_data","description":"Read bonbon data and return it as a string when user requests it.","inputSchema":{"properties":{},"title":"read_bonbon_dataArguments","type":"object"}},{"name":"edit_document","description":"Edit a document by replacing a string in the documents content with a new string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document that will be edited","title":"Doc Id","type":"string"},"old_str":{"description":"The text to replace. Must match exactly, including whitespace.","title":"Old Str","type":"string"},"new_str":{"description":"The new text to insert in place of the old text.","title":"New Str","type":"string"}},"required":["doc_id","old_str","new_str"],"title":"edit_documentArguments","type":"object"}}]}}\r\n\r\n'
+2026-05-16 20:12:05,829 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListPromptsRequest
+2026-05-16 20:12:05,829 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListPromptsRequest
+2026-05-16 20:12:05,829 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:12:05,829 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d117070>
+2026-05-16 20:12:05,829 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourcesRequest
+2026-05-16 20:12:05,829 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourcesRequest
+2026-05-16 20:12:05,829 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing resources
+2026-05-16 20:12:05,829 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:12:05,829 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:12:05,829 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:12:05,829 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":2,"result":{"prompts":[{"name":"format","description":"Rewrites the contents of the document in Markdown format.","arguments":[{"name":"doc_id","description":"Id of the document to format","required":true}]}]}}\r\n\r\n'
+2026-05-16 20:12:05,830 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:12:05,830 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":3,"result":{"resources":[{"name":"list_docs","uri":"docs://documents","description":"","mimeType":"application/json"}]}}\r\n\r\n'
+2026-05-16 20:12:05,830 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:12:05,830 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:12:06,353 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:12:06,353 [DEBUG   ] mcp.server.streamable_http: Closing standalone SSE writer
+2026-05-16 20:12:17,713 [DEBUG   ] mcp.server.streamable_http_manager: Creating new transport
+2026-05-16 20:12:17,713 [INFO    ] mcp.server.streamable_http_manager: Created new transport with session ID: 50bd17ebdef44bc69e5370702e6783db
+2026-05-16 20:12:17,714 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:12:17,714 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"experimental":{},"prompts":{"listChanged":false},"resources":{"subscribe":false,"listChanged":false},"tools":{"listChanged":false}},"serverInfo":{"name":"DocumentMCP","version":"1.26.0"}}}\r\n\r\n'
+2026-05-16 20:12:17,715 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:12:17,721 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:12:17,721 [DEBUG   ] mcp.server.lowlevel.server: Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-05-16 20:12:17,723 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:12:17,723 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:12:17,724 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d117610>
+2026-05-16 20:12:17,724 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-16 20:12:17,724 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-16 20:12:17,724 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:12:17,724 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:12:17,724 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:12:17,725 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d116c10>
+2026-05-16 20:12:17,725 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:12:17,725 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListPromptsRequest
+2026-05-16 20:12:17,725 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListPromptsRequest
+2026-05-16 20:12:17,725 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"read_doc_contents","description":"Read the contents of a document and return it as a string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document to read","title":"Doc Id","type":"string"}},"required":["doc_id"],"title":"read_documentArguments","type":"object"}},{"name":"read_bonbon_data","description":"Read bonbon data and return it as a string when user requests it.","inputSchema":{"properties":{},"title":"read_bonbon_dataArguments","type":"object"}},{"name":"edit_document","description":"Edit a document by replacing a string in the documents content with a new string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document that will be edited","title":"Doc Id","type":"string"},"old_str":{"description":"The text to replace. Must match exactly, including whitespace.","title":"Old Str","type":"string"},"new_str":{"description":"The new text to insert in place of the old text.","title":"New Str","type":"string"}},"required":["doc_id","old_str","new_str"],"title":"edit_documentArguments","type":"object"}}]}}\r\n\r\n'
+2026-05-16 20:12:17,725 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:12:17,725 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d117610>
+2026-05-16 20:12:17,725 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourcesRequest
+2026-05-16 20:12:17,725 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourcesRequest
+2026-05-16 20:12:17,725 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing resources
+2026-05-16 20:12:17,726 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:12:17,726 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:12:17,726 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:12:17,726 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":2,"result":{"prompts":[{"name":"format","description":"Rewrites the contents of the document in Markdown format.","arguments":[{"name":"doc_id","description":"Id of the document to format","required":true}]}]}}\r\n\r\n'
+2026-05-16 20:12:17,726 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:12:17,726 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":3,"result":{"resources":[{"name":"list_docs","uri":"docs://documents","description":"","mimeType":"application/json"}]}}\r\n\r\n'
+2026-05-16 20:12:17,726 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:12:17,726 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:12:19,704 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:12:19.704177+00:00\r\n\r\n'
+2026-05-16 20:12:32,725 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:12:32.725462+00:00\r\n\r\n'
+2026-05-16 20:12:34,706 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:12:34.706434+00:00\r\n\r\n'
+2026-05-16 20:12:47,727 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:12:47.727666+00:00\r\n\r\n'
+2026-05-16 20:12:49,708 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:12:49.708654+00:00\r\n\r\n'
+2026-05-16 20:13:02,730 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:13:02.730571+00:00\r\n\r\n'
+2026-05-16 20:13:04,711 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:13:04.710915+00:00\r\n\r\n'
+2026-05-16 20:13:17,731 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:13:17.731551+00:00\r\n\r\n'
+2026-05-16 20:13:19,713 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:13:19.713016+00:00\r\n\r\n'
+2026-05-16 20:13:32,732 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:13:32.732126+00:00\r\n\r\n'
+2026-05-16 20:13:34,713 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:13:34.713461+00:00\r\n\r\n'
+2026-05-16 20:13:47,733 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:13:47.733708+00:00\r\n\r\n'
+2026-05-16 20:13:49,715 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:13:49.714898+00:00\r\n\r\n'
+2026-05-16 20:14:02,735 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:14:02.735617+00:00\r\n\r\n'
+2026-05-16 20:14:04,717 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:14:04.716990+00:00\r\n\r\n'
+2026-05-16 20:14:17,737 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:14:17.737753+00:00\r\n\r\n'
+2026-05-16 20:14:19,719 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:14:19.719078+00:00\r\n\r\n'
+2026-05-16 20:14:32,739 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:14:32.739167+00:00\r\n\r\n'
+2026-05-16 20:14:34,720 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:14:34.720604+00:00\r\n\r\n'
+2026-05-16 20:14:45,452 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:14:45,452 [DEBUG   ] mcp.server.streamable_http: Closing standalone SSE writer
+2026-05-16 20:14:45,490 [DEBUG   ] mcp.server.streamable_http_manager: Creating new transport
+2026-05-16 20:14:45,490 [INFO    ] mcp.server.streamable_http_manager: Created new transport with session ID: 50adcbd209c54c01afad54f694e34ae8
+2026-05-16 20:14:45,493 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:14:45,493 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"experimental":{},"prompts":{"listChanged":false},"resources":{"subscribe":false,"listChanged":false},"tools":{"listChanged":false}},"serverInfo":{"name":"DocumentMCP","version":"1.26.0"}}}\r\n\r\n'
+2026-05-16 20:14:45,493 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:14:45,496 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:14:45,496 [DEBUG   ] mcp.server.lowlevel.server: Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-05-16 20:14:45,497 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:14:45,498 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:14:45,498 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d117a70>
+2026-05-16 20:14:45,498 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-16 20:14:45,498 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-16 20:14:45,498 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:14:45,499 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:14:45,499 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:14:45,499 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d17c730>
+2026-05-16 20:14:45,499 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:14:45,499 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListPromptsRequest
+2026-05-16 20:14:45,499 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListPromptsRequest
+2026-05-16 20:14:45,499 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"read_doc_contents","description":"Read the contents of a document and return it as a string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document to read","title":"Doc Id","type":"string"}},"required":["doc_id"],"title":"read_documentArguments","type":"object"}},{"name":"read_bonbon_data","description":"Read bonbon data and return it as a string when user requests it.","inputSchema":{"properties":{},"title":"read_bonbon_dataArguments","type":"object"}},{"name":"edit_document","description":"Edit a document by replacing a string in the documents content with a new string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document that will be edited","title":"Doc Id","type":"string"},"old_str":{"description":"The text to replace. Must match exactly, including whitespace.","title":"Old Str","type":"string"},"new_str":{"description":"The new text to insert in place of the old text.","title":"New Str","type":"string"}},"required":["doc_id","old_str","new_str"],"title":"edit_documentArguments","type":"object"}}]}}\r\n\r\n'
+2026-05-16 20:14:45,499 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:14:45,499 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d117a70>
+2026-05-16 20:14:45,500 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourcesRequest
+2026-05-16 20:14:45,500 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourcesRequest
+2026-05-16 20:14:45,500 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing resources
+2026-05-16 20:14:45,500 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:14:45,500 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:14:45,500 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:14:45,500 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":2,"result":{"prompts":[{"name":"format","description":"Rewrites the contents of the document in Markdown format.","arguments":[{"name":"doc_id","description":"Id of the document to format","required":true}]}]}}\r\n\r\n'
+2026-05-16 20:14:45,500 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:14:45,500 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":3,"result":{"resources":[{"name":"list_docs","uri":"docs://documents","description":"","mimeType":"application/json"}]}}\r\n\r\n'
+2026-05-16 20:14:45,500 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:14:45,500 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:14:46,024 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:14:46,024 [DEBUG   ] mcp.server.streamable_http: Closing standalone SSE writer
+2026-05-16 20:14:49,723 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:14:49.722992+00:00\r\n\r\n'
+2026-05-16 20:14:53,587 [DEBUG   ] mcp.server.streamable_http_manager: Creating new transport
+2026-05-16 20:14:53,588 [INFO    ] mcp.server.streamable_http_manager: Created new transport with session ID: 8f7528c92d6c417da2c2febf50f5a279
+2026-05-16 20:14:53,589 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:14:53,589 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"experimental":{},"prompts":{"listChanged":false},"resources":{"subscribe":false,"listChanged":false},"tools":{"listChanged":false}},"serverInfo":{"name":"DocumentMCP","version":"1.26.0"}}}\r\n\r\n'
+2026-05-16 20:14:53,589 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:14:53,605 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:14:53,605 [DEBUG   ] mcp.server.lowlevel.server: Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-05-16 20:14:53,617 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:14:53,618 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:14:53,618 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d116b70>
+2026-05-16 20:14:53,618 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-16 20:14:53,618 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-16 20:14:53,619 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:14:53,619 [DEBUG   ] mcp.server.streamable_http_manager: Session already exists, handling request directly
+2026-05-16 20:14:53,619 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:14:53,620 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d1176b0>
+2026-05-16 20:14:53,620 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:14:53,620 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListPromptsRequest
+2026-05-16 20:14:53,620 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListPromptsRequest
+2026-05-16 20:14:53,620 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"read_doc_contents","description":"Read the contents of a document and return it as a string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document to read","title":"Doc Id","type":"string"}},"required":["doc_id"],"title":"read_documentArguments","type":"object"}},{"name":"read_bonbon_data","description":"Read bonbon data and return it as a string when user requests it.","inputSchema":{"properties":{},"title":"read_bonbon_dataArguments","type":"object"}},{"name":"edit_document","description":"Edit a document by replacing a string in the documents content with a new string.","inputSchema":{"properties":{"doc_id":{"description":"Id of the document that will be edited","title":"Doc Id","type":"string"},"old_str":{"description":"The text to replace. Must match exactly, including whitespace.","title":"Old Str","type":"string"},"new_str":{"description":"The new text to insert in place of the old text.","title":"New Str","type":"string"}},"required":["doc_id","old_str","new_str"],"title":"edit_documentArguments","type":"object"}}]}}\r\n\r\n'
+2026-05-16 20:14:53,620 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:14:53,620 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x10d116b70>
+2026-05-16 20:14:53,620 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourcesRequest
+2026-05-16 20:14:53,620 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourcesRequest
+2026-05-16 20:14:53,620 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing resources
+2026-05-16 20:14:53,620 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:14:53,620 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:14:53,620 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:14:53,620 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":2,"result":{"prompts":[{"name":"format","description":"Rewrites the contents of the document in Markdown format.","arguments":[{"name":"doc_id","description":"Id of the document to format","required":true}]}]}}\r\n\r\n'
+2026-05-16 20:14:53,621 [DEBUG   ] mcp.server.streamable_http: Closing SSE writer
+2026-05-16 20:14:53,621 [DEBUG   ] sse_starlette.sse: chunk: b'event: message\r\ndata: {"jsonrpc":"2.0","id":3,"result":{"resources":[{"name":"list_docs","uri":"docs://documents","description":"","mimeType":"application/json"}]}}\r\n\r\n'
+2026-05-16 20:14:53,621 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:14:53,621 [DEBUG   ] sse_starlette.sse: Got event: http.disconnect. Stop streaming.
+2026-05-16 20:14:53,857 [DEBUG   ] mcp.server.lowlevel.server: Initializing server 'DocumentMCP'
+2026-05-16 20:14:53,857 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ListToolsRequest
+2026-05-16 20:14:53,857 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for CallToolRequest
+2026-05-16 20:14:53,857 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ListResourcesRequest
+2026-05-16 20:14:53,857 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ReadResourceRequest
+2026-05-16 20:14:53,857 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for PromptListRequest
+2026-05-16 20:14:53,857 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for GetPromptRequest
+2026-05-16 20:14:53,857 [DEBUG   ] mcp.server.lowlevel.server: Registering handler for ListResourceTemplatesRequest
+2026-05-16 20:14:53,860 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Adding resource
+2026-05-16 20:14:53,865 [DEBUG   ] asyncio: Using selector: KqueueSelector
+2026-05-16 20:14:53,867 [DEBUG   ] mcp.server.lowlevel.server: Received message: root=InitializedNotification(method='notifications/initialized', params=None, jsonrpc='2.0')
+2026-05-16 20:14:53,868 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x1086c4410>
+2026-05-16 20:14:53,868 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListToolsRequest
+2026-05-16 20:14:53,868 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListToolsRequest
+2026-05-16 20:14:53,868 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:14:53,868 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x1086c42d0>
+2026-05-16 20:14:53,868 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListPromptsRequest
+2026-05-16 20:14:53,868 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListPromptsRequest
+2026-05-16 20:14:53,868 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x1085b2ea0>
+2026-05-16 20:14:53,868 [INFO    ] mcp.server.lowlevel.server: Processing request of type ListResourcesRequest
+2026-05-16 20:14:53,868 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type ListResourcesRequest
+2026-05-16 20:14:53,868 [DEBUG   ] mcp.server.fastmcp.resources.resource_manager: Listing resources
+2026-05-16 20:14:53,869 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:14:53,869 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:15:04,724 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:15:04.724739+00:00\r\n\r\n'
+2026-05-16 20:15:08,620 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:15:08.619888+00:00\r\n\r\n'
+2026-05-16 20:15:18,699 [DEBUG   ] mcp.server.lowlevel.server: Received message: <mcp.shared.session.RequestResponder object at 0x1085b3360>
+2026-05-16 20:15:18,700 [INFO    ] mcp.server.lowlevel.server: Processing request of type CallToolRequest
+2026-05-16 20:15:18,700 [DEBUG   ] mcp.server.lowlevel.server: Dispatching request of type CallToolRequest
+2026-05-16 20:15:18,700 [DEBUG   ] mcp.server.lowlevel.server: Response sent
+2026-05-16 20:15:19,726 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:15:19.726555+00:00\r\n\r\n'
+2026-05-16 20:15:23,622 [DEBUG   ] sse_starlette.sse: ping: b': ping - 2026-05-16 14:15:23.621998+00:00\r\n\r\n'

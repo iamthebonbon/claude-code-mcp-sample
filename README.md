@@ -93,6 +93,48 @@ Use the / prefix to execute commands defined in the MCP server:
 
 Commands will auto-complete when you press Tab.
 
+## MCP Servers
+
+### `mcp_server.py` (stdio transport)
+
+This server communicates over stdin/stdout. Claude Code manages its process lifecycle automatically.
+
+Run directly (for testing):
+
+```bash
+uv run mcp_server.py
+```
+
+Add to Claude Code:
+
+```bash
+claude mcp add --scope project document-mcp -- uv run --directory /Users/a.namazbekov/Projects/cli_project python mcp_server.py
+```
+
+> **Note:** The `--directory` flag ensures `uv` resolves the correct virtual environment and logs are written to the right location, even when the command is run from a different project directory.
+
+### `mcp_server_http.py` (streamable-http transport)
+
+This server runs as a standalone HTTP process on `http://127.0.0.1:8000`.
+
+Start the server:
+
+```bash
+uv run mcp_server_http.py
+```
+
+Add to Claude Code (server must be running first):
+
+```bash
+claude mcp add --transport http --scope project document-mcp-http http://127.0.0.1:8000/mcp
+```
+
+Verify both servers are registered:
+
+```bash
+claude mcp list
+```
+
 ## Development
 
 ### Adding New Documents
