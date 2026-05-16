@@ -13,7 +13,7 @@ logging.getLogger().setLevel(logging.DEBUG)
 
 logger = logging.getLogger(__name__)
 
-mcp = FastMCP("DocumentMCP", log_level="WARNING")
+mcp = FastMCP("DocumentMCP", log_level="WARNING", host="127.0.0.1", port=8000)
 
 docs = {
     "deposition.md": "This deposition covers the testimony of Angela Smith, P.E.",
@@ -37,13 +37,12 @@ def read_document(
     logger.info("read_doc_contents: %s", doc_id)
     return docs[doc_id]
 
-
 @mcp.tool(
     name="read_bonbon_data",
     description="Read bonbon data and return it as a string when user requests it."
 )
 def read_bonbon_data():
-    return "Sample bonbon data. BonBon is really just Xaltura"
+    return "Sample bonbon data. BonBon is really IceXalture"
 
 @mcp.tool(
     name="edit_document",
@@ -103,4 +102,4 @@ def format_document(
 # TODO: Write a prompt to summarize a doc
 
 if __name__ == "__main__":
-    mcp.run(transport="stdio")
+    mcp.run(transport="streamable-http")

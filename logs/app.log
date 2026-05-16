@@ -613,3 +613,604 @@
   "stop_details": null
 }
 2026-05-12 01:30:45,633 [INFO    ] core.chat: Chat complete — stop_reason=end_turn, turns=1
+2026-05-16 19:34:10,925 [DEBUG   ] asyncio: Using selector: KqueueSelector
+2026-05-16 19:34:10,925 [INFO    ] __main__: Starting MCP Chat
+2026-05-16 19:34:10,925 [INFO    ] __main__: Claude model: claude-sonnet-4-6
+2026-05-16 19:34:10,946 [DEBUG   ] mcp_client: Connecting to MCP server: uv run mcp_server.py
+2026-05-16 19:34:11,141 [DEBUG   ] mcp_client: MCP server connected: uv run mcp_server.py
+2026-05-16 19:34:11,141 [INFO    ] __main__: Connected MCP client: doc_client (uv run mcp_server.py)
+2026-05-16 19:34:17,374 [INFO    ] core.chat: New query: @deposition.md
+2026-05-16 19:34:17,374 [DEBUG   ] core.cli_chat: @-mentions in query: ['deposition.md']
+2026-05-16 19:34:17,379 [INFO    ] core.cli_chat: Resolved document resources: ['deposition.md']
+2026-05-16 19:34:17,379 [DEBUG   ] core.cli_chat: Query processed — injected_docs=True
+2026-05-16 19:34:17,379 [DEBUG   ] core.chat: Sending to Claude (turn 1)
+2026-05-16 19:34:17,381 [DEBUG   ] mcp_client: list_tools → ['read_doc_contents', 'edit_document']
+2026-05-16 19:34:17,381 [DEBUG   ] core.tools: Available tools (2): ['read_doc_contents', 'edit_document']
+2026-05-16 19:34:17,381 [DEBUG   ] core.claude: Calling Claude — model=claude-sonnet-4-6, messages=1, tools=2, thinking=False
+2026-05-16 19:34:17,381 [DEBUG   ] core.claude: Claude raw request:
+{
+  "model": "claude-sonnet-4-6",
+  "max_tokens": 8000,
+  "messages": [
+    {
+      "role": "user",
+      "content": "\n        The user has a question:\n        <query>\n        @deposition.md\n        </query>\n\n        The following context may be useful in answering their question:\n        <context>\n        \n<document id=\"deposition.md\">\nThis deposition covers the testimony of Angela Smith, P.E.\n</document>\n\n        </context>\n\n        Note the user's query might contain references to documents like \"@report.docx\". The \"@\" is only\n        included as a way of mentioning the doc. The actual name of the document would be \"report.docx\".\n        If the document content is included in this prompt, you don't need to use an additional tool to read the document.\n        Answer the user's question directly and concisely. Start with the exact information they need.\n        Don't refer to or mention the provided context in any way - just use it to inform your answer.\n        "
+    }
+  ],
+  "temperature": 1.0,
+  "stop_sequences": [],
+  "tools": [
+    {
+      "name": "read_doc_contents",
+      "description": "Read the contents of a document and return it as a string.",
+      "input_schema": {
+        "properties": {
+          "doc_id": {
+            "description": "Id of the document to read",
+            "title": "Doc Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "doc_id"
+        ],
+        "title": "read_documentArguments",
+        "type": "object"
+      }
+    },
+    {
+      "name": "edit_document",
+      "description": "Edit a document by replacing a string in the documents content with a new string.",
+      "input_schema": {
+        "properties": {
+          "doc_id": {
+            "description": "Id of the document that will be edited",
+            "title": "Doc Id",
+            "type": "string"
+          },
+          "old_str": {
+            "description": "The text to replace. Must match exactly, including whitespace.",
+            "title": "Old Str",
+            "type": "string"
+          },
+          "new_str": {
+            "description": "The new text to insert in place of the old text.",
+            "title": "New Str",
+            "type": "string"
+          }
+        },
+        "required": [
+          "doc_id",
+          "old_str",
+          "new_str"
+        ],
+        "title": "edit_documentArguments",
+        "type": "object"
+      }
+    }
+  ]
+}
+2026-05-16 19:34:17,385 [DEBUG   ] anthropic._base_client: Request options: {'method': 'post', 'url': '/v1/messages', 'timeout': Timeout(connect=5.0, read=600, write=600, pool=600), 'files': None, 'idempotency_key': 'stainless-python-retry-b837d7d1-60b3-427a-ab82-4e60a3b02125', 'content': None, 'json_data': {'max_tokens': 8000, 'messages': [{'role': 'user', 'content': '\n        The user has a question:\n        <query>\n        @deposition.md\n        </query>\n\n        The following context may be useful in answering their question:\n        <context>\n        \n<document id="deposition.md">\nThis deposition covers the testimony of Angela Smith, P.E.\n</document>\n\n        </context>\n\n        Note the user\'s query might contain references to documents like "@report.docx". The "@" is only\n        included as a way of mentioning the doc. The actual name of the document would be "report.docx".\n        If the document content is included in this prompt, you don\'t need to use an additional tool to read the document.\n        Answer the user\'s question directly and concisely. Start with the exact information they need.\n        Don\'t refer to or mention the provided context in any way - just use it to inform your answer.\n        '}], 'model': 'claude-sonnet-4-6', 'stop_sequences': [], 'temperature': 1.0, 'tools': [{'name': 'read_doc_contents', 'description': 'Read the contents of a document and return it as a string.', 'input_schema': {'properties': {'doc_id': {'description': 'Id of the document to read', 'title': 'Doc Id', 'type': 'string'}}, 'required': ['doc_id'], 'title': 'read_documentArguments', 'type': 'object'}}, {'name': 'edit_document', 'description': 'Edit a document by replacing a string in the documents content with a new string.', 'input_schema': {'properties': {'doc_id': {'description': 'Id of the document that will be edited', 'title': 'Doc Id', 'type': 'string'}, 'old_str': {'description': 'The text to replace. Must match exactly, including whitespace.', 'title': 'Old Str', 'type': 'string'}, 'new_str': {'description': 'The new text to insert in place of the old text.', 'title': 'New Str', 'type': 'string'}}, 'required': ['doc_id', 'old_str', 'new_str'], 'title': 'edit_documentArguments', 'type': 'object'}}]}}
+2026-05-16 19:34:17,399 [DEBUG   ] anthropic._base_client: Sending HTTP Request: POST https://api.anthropic.com/v1/messages
+2026-05-16 19:34:17,400 [DEBUG   ] httpcore.connection: connect_tcp.started host='api.anthropic.com' port=443 local_address=None timeout=5.0 socket_options=[(65535, 8, True), (6, 257, 60), (6, 258, 5)]
+2026-05-16 19:34:17,490 [DEBUG   ] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10d2cd160>
+2026-05-16 19:34:17,490 [DEBUG   ] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x10cf36a80> server_hostname='api.anthropic.com' timeout=5.0
+2026-05-16 19:34:17,504 [DEBUG   ] httpcore.connection: start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10d2e0190>
+2026-05-16 19:34:17,504 [DEBUG   ] httpcore.http11: send_request_headers.started request=<Request [b'POST']>
+2026-05-16 19:34:17,505 [DEBUG   ] httpcore.http11: send_request_headers.complete
+2026-05-16 19:34:17,505 [DEBUG   ] httpcore.http11: send_request_body.started request=<Request [b'POST']>
+2026-05-16 19:34:17,505 [DEBUG   ] httpcore.http11: send_request_body.complete
+2026-05-16 19:34:17,505 [DEBUG   ] httpcore.http11: receive_response_headers.started request=<Request [b'POST']>
+2026-05-16 19:34:19,271 [DEBUG   ] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sat, 16 May 2026 13:34:19 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'anthropic-ratelimit-input-tokens-limit', b'30000'), (b'anthropic-ratelimit-input-tokens-remaining', b'29000'), (b'anthropic-ratelimit-input-tokens-reset', b'2026-05-16T13:34:19Z'), (b'anthropic-ratelimit-output-tokens-limit', b'8000'), (b'anthropic-ratelimit-output-tokens-remaining', b'8000'), (b'anthropic-ratelimit-output-tokens-reset', b'2026-05-16T13:34:19Z'), (b'anthropic-ratelimit-requests-limit', b'50'), (b'anthropic-ratelimit-requests-remaining', b'49'), (b'anthropic-ratelimit-requests-reset', b'2026-05-16T13:34:18Z'), (b'anthropic-ratelimit-tokens-limit', b'38000'), (b'anthropic-ratelimit-tokens-remaining', b'37000'), (b'anthropic-ratelimit-tokens-reset', b'2026-05-16T13:34:19Z'), (b'request-id', b'req_011Cb6LMGkKPTr3FiFYSy3Zt'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'anthropic-organization-id', b'e7ddc705-7c58-4a93-aa44-885d49ea18ee'), (b'traceresponse', b'00-97507fbc6676ddd9f9de5514e7c3ed85-e2a7951cb479e158-01'), (b'Server', b'cloudflare'), (b'x-envoy-upstream-service-time', b'1515'), (b'Content-Encoding', b'gzip'), (b'vary', b'Accept-Encoding'), (b'cf-cache-status', b'DYNAMIC'), (b'set-cookie', b'_cfuvid=XJpAvORR5yho4DYyv0ArH0jnY4yLn1AuIk9mne0H4H4-1778938457.567375-1.0.1.1-sg2bd3Xav3pOSMx_A2RtttIDnwXmS71Syx8pVqvyV9s; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.anthropic.com'), (b'Content-Security-Policy', b"default-src 'none'; frame-ancestors 'none'"), (b'X-Robots-Tag', b'none'), (b'CF-RAY', b'9fcac24fcb5e0db3-FRU')])
+2026-05-16 19:34:19,273 [INFO    ] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-16 19:34:19,274 [DEBUG   ] httpcore.http11: receive_response_body.started request=<Request [b'POST']>
+2026-05-16 19:34:19,274 [DEBUG   ] httpcore.http11: receive_response_body.complete
+2026-05-16 19:34:19,275 [DEBUG   ] httpcore.http11: response_closed.started
+2026-05-16 19:34:19,275 [DEBUG   ] httpcore.http11: response_closed.complete
+2026-05-16 19:34:19,275 [DEBUG   ] anthropic._base_client: HTTP Response: POST https://api.anthropic.com/v1/messages "200 OK" Headers({'date': 'Sat, 16 May 2026 13:34:19 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'anthropic-ratelimit-input-tokens-limit': '30000', 'anthropic-ratelimit-input-tokens-remaining': '29000', 'anthropic-ratelimit-input-tokens-reset': '2026-05-16T13:34:19Z', 'anthropic-ratelimit-output-tokens-limit': '8000', 'anthropic-ratelimit-output-tokens-remaining': '8000', 'anthropic-ratelimit-output-tokens-reset': '2026-05-16T13:34:19Z', 'anthropic-ratelimit-requests-limit': '50', 'anthropic-ratelimit-requests-remaining': '49', 'anthropic-ratelimit-requests-reset': '2026-05-16T13:34:18Z', 'anthropic-ratelimit-tokens-limit': '38000', 'anthropic-ratelimit-tokens-remaining': '37000', 'anthropic-ratelimit-tokens-reset': '2026-05-16T13:34:19Z', 'request-id': 'req_011Cb6LMGkKPTr3FiFYSy3Zt', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'anthropic-organization-id': 'e7ddc705-7c58-4a93-aa44-885d49ea18ee', 'traceresponse': '00-97507fbc6676ddd9f9de5514e7c3ed85-e2a7951cb479e158-01', 'server': 'cloudflare', 'x-envoy-upstream-service-time': '1515', 'content-encoding': 'gzip', 'vary': 'Accept-Encoding', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '_cfuvid=XJpAvORR5yho4DYyv0ArH0jnY4yLn1AuIk9mne0H4H4-1778938457.567375-1.0.1.1-sg2bd3Xav3pOSMx_A2RtttIDnwXmS71Syx8pVqvyV9s; HttpOnly; SameSite=None; Secure; Path=/; Domain=api.anthropic.com', 'content-security-policy': "default-src 'none'; frame-ancestors 'none'", 'x-robots-tag': 'none', 'cf-ray': '9fcac24fcb5e0db3-FRU'})
+2026-05-16 19:34:19,275 [DEBUG   ] anthropic._base_client: request_id: req_011Cb6LMGkKPTr3FiFYSy3Zt
+2026-05-16 19:34:19,290 [DEBUG   ] core.claude: Claude response — stop_reason=end_turn, in=981 out=18 tokens
+2026-05-16 19:34:19,290 [DEBUG   ] core.claude: Claude raw response:
+{
+  "id": "msg_01FMJUnXZVbKiaN7vbhGzxMX",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The deposition covers the testimony of **Angela Smith, P.E.**",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 981,
+    "output_tokens": 18,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  },
+  "stop_details": null
+}
+2026-05-16 19:34:19,290 [INFO    ] core.chat: Chat complete — stop_reason=end_turn, turns=1
+2026-05-16 19:34:27,177 [INFO    ] core.chat: New query: /format financials.docx
+2026-05-16 19:34:27,178 [INFO    ] core.cli_chat: Processing command: /format doc_id=financials.docx
+2026-05-16 19:34:27,181 [DEBUG   ] core.cli_chat: Query handled as command
+2026-05-16 19:34:27,181 [DEBUG   ] core.chat: Sending to Claude (turn 1)
+2026-05-16 19:34:27,182 [DEBUG   ] mcp_client: list_tools → ['read_doc_contents', 'edit_document']
+2026-05-16 19:34:27,182 [DEBUG   ] core.tools: Available tools (2): ['read_doc_contents', 'edit_document']
+2026-05-16 19:34:27,182 [DEBUG   ] core.claude: Calling Claude — model=claude-sonnet-4-6, messages=3, tools=2, thinking=False
+2026-05-16 19:34:27,183 [DEBUG   ] core.claude: Claude raw request:
+{
+  "model": "claude-sonnet-4-6",
+  "max_tokens": 8000,
+  "messages": [
+    {
+      "role": "user",
+      "content": "\n        The user has a question:\n        <query>\n        @deposition.md\n        </query>\n\n        The following context may be useful in answering their question:\n        <context>\n        \n<document id=\"deposition.md\">\nThis deposition covers the testimony of Angela Smith, P.E.\n</document>\n\n        </context>\n\n        Note the user's query might contain references to documents like \"@report.docx\". The \"@\" is only\n        included as a way of mentioning the doc. The actual name of the document would be \"report.docx\".\n        If the document content is included in this prompt, you don't need to use an additional tool to read the document.\n        Answer the user's question directly and concisely. Start with the exact information they need.\n        Don't refer to or mention the provided context in any way - just use it to inform your answer.\n        "
+    },
+    {
+      "role": "assistant",
+      "content": [
+        "TextBlock(citations=None, text='The deposition covers the testimony of **Angela Smith, P.E.**', type='text')"
+      ]
+    },
+    {
+      "role": "user",
+      "content": "\n        Your goal is to reformat a document to be written with markdown syntax.\n\n        The id of the document you need to reformat is:\n        <document_id>\n        financials.docx\n        </document_id>\n\n        Add in headers, bullet points, tables, etc as necessary. Feel free to add in structure.\n        Use the 'edit_document' tool to edit the document. After the document has been reformatted...\n        "
+    }
+  ],
+  "temperature": 1.0,
+  "stop_sequences": [],
+  "tools": [
+    {
+      "name": "read_doc_contents",
+      "description": "Read the contents of a document and return it as a string.",
+      "input_schema": {
+        "properties": {
+          "doc_id": {
+            "description": "Id of the document to read",
+            "title": "Doc Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "doc_id"
+        ],
+        "title": "read_documentArguments",
+        "type": "object"
+      }
+    },
+    {
+      "name": "edit_document",
+      "description": "Edit a document by replacing a string in the documents content with a new string.",
+      "input_schema": {
+        "properties": {
+          "doc_id": {
+            "description": "Id of the document that will be edited",
+            "title": "Doc Id",
+            "type": "string"
+          },
+          "old_str": {
+            "description": "The text to replace. Must match exactly, including whitespace.",
+            "title": "Old Str",
+            "type": "string"
+          },
+          "new_str": {
+            "description": "The new text to insert in place of the old text.",
+            "title": "New Str",
+            "type": "string"
+          }
+        },
+        "required": [
+          "doc_id",
+          "old_str",
+          "new_str"
+        ],
+        "title": "edit_documentArguments",
+        "type": "object"
+      }
+    }
+  ]
+}
+2026-05-16 19:34:27,186 [DEBUG   ] anthropic._base_client: Request options: {'method': 'post', 'url': '/v1/messages', 'timeout': Timeout(connect=5.0, read=600, write=600, pool=600), 'files': None, 'idempotency_key': 'stainless-python-retry-7deb651f-e2fa-49e4-9f7f-d97c32b308b4', 'content': None, 'json_data': {'max_tokens': 8000, 'messages': [{'role': 'user', 'content': '\n        The user has a question:\n        <query>\n        @deposition.md\n        </query>\n\n        The following context may be useful in answering their question:\n        <context>\n        \n<document id="deposition.md">\nThis deposition covers the testimony of Angela Smith, P.E.\n</document>\n\n        </context>\n\n        Note the user\'s query might contain references to documents like "@report.docx". The "@" is only\n        included as a way of mentioning the doc. The actual name of the document would be "report.docx".\n        If the document content is included in this prompt, you don\'t need to use an additional tool to read the document.\n        Answer the user\'s question directly and concisely. Start with the exact information they need.\n        Don\'t refer to or mention the provided context in any way - just use it to inform your answer.\n        '}, {'role': 'assistant', 'content': [{'text': 'The deposition covers the testimony of **Angela Smith, P.E.**', 'type': 'text'}]}, {'role': 'user', 'content': "\n        Your goal is to reformat a document to be written with markdown syntax.\n\n        The id of the document you need to reformat is:\n        <document_id>\n        financials.docx\n        </document_id>\n\n        Add in headers, bullet points, tables, etc as necessary. Feel free to add in structure.\n        Use the 'edit_document' tool to edit the document. After the document has been reformatted...\n        "}], 'model': 'claude-sonnet-4-6', 'stop_sequences': [], 'temperature': 1.0, 'tools': [{'name': 'read_doc_contents', 'description': 'Read the contents of a document and return it as a string.', 'input_schema': {'properties': {'doc_id': {'description': 'Id of the document to read', 'title': 'Doc Id', 'type': 'string'}}, 'required': ['doc_id'], 'title': 'read_documentArguments', 'type': 'object'}}, {'name': 'edit_document', 'description': 'Edit a document by replacing a string in the documents content with a new string.', 'input_schema': {'properties': {'doc_id': {'description': 'Id of the document that will be edited', 'title': 'Doc Id', 'type': 'string'}, 'old_str': {'description': 'The text to replace. Must match exactly, including whitespace.', 'title': 'Old Str', 'type': 'string'}, 'new_str': {'description': 'The new text to insert in place of the old text.', 'title': 'New Str', 'type': 'string'}}, 'required': ['doc_id', 'old_str', 'new_str'], 'title': 'edit_documentArguments', 'type': 'object'}}]}}
+2026-05-16 19:34:27,187 [DEBUG   ] anthropic._base_client: Sending HTTP Request: POST https://api.anthropic.com/v1/messages
+2026-05-16 19:34:27,187 [DEBUG   ] httpcore.connection: close.started
+2026-05-16 19:34:27,187 [DEBUG   ] httpcore.connection: close.complete
+2026-05-16 19:34:27,187 [DEBUG   ] httpcore.connection: connect_tcp.started host='api.anthropic.com' port=443 local_address=None timeout=5.0 socket_options=[(65535, 8, True), (6, 257, 60), (6, 258, 5)]
+2026-05-16 19:34:27,195 [DEBUG   ] httpcore.connection: connect_tcp.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10d2e11d0>
+2026-05-16 19:34:27,195 [DEBUG   ] httpcore.connection: start_tls.started ssl_context=<ssl.SSLContext object at 0x10cf36a80> server_hostname='api.anthropic.com' timeout=5.0
+2026-05-16 19:34:27,203 [DEBUG   ] httpcore.connection: start_tls.complete return_value=<httpcore._backends.sync.SyncStream object at 0x10d10ab10>
+2026-05-16 19:34:27,203 [DEBUG   ] httpcore.http11: send_request_headers.started request=<Request [b'POST']>
+2026-05-16 19:34:27,204 [DEBUG   ] httpcore.http11: send_request_headers.complete
+2026-05-16 19:34:27,204 [DEBUG   ] httpcore.http11: send_request_body.started request=<Request [b'POST']>
+2026-05-16 19:34:27,204 [DEBUG   ] httpcore.http11: send_request_body.complete
+2026-05-16 19:34:27,204 [DEBUG   ] httpcore.http11: receive_response_headers.started request=<Request [b'POST']>
+2026-05-16 19:34:28,997 [DEBUG   ] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sat, 16 May 2026 13:34:29 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'anthropic-ratelimit-input-tokens-limit', b'30000'), (b'anthropic-ratelimit-input-tokens-remaining', b'29000'), (b'anthropic-ratelimit-input-tokens-reset', b'2026-05-16T13:34:29Z'), (b'anthropic-ratelimit-output-tokens-limit', b'8000'), (b'anthropic-ratelimit-output-tokens-remaining', b'8000'), (b'anthropic-ratelimit-output-tokens-reset', b'2026-05-16T13:34:29Z'), (b'anthropic-ratelimit-requests-limit', b'50'), (b'anthropic-ratelimit-requests-remaining', b'49'), (b'anthropic-ratelimit-requests-reset', b'2026-05-16T13:34:28Z'), (b'anthropic-ratelimit-tokens-limit', b'38000'), (b'anthropic-ratelimit-tokens-remaining', b'37000'), (b'anthropic-ratelimit-tokens-reset', b'2026-05-16T13:34:29Z'), (b'request-id', b'req_011Cb6LMzDBggh6QcDErrKqk'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'anthropic-organization-id', b'e7ddc705-7c58-4a93-aa44-885d49ea18ee'), (b'traceresponse', b'00-4efd9506e1ddc291d62ad7ec12a7161a-7f62b03fe3aecb13-01'), (b'Server', b'cloudflare'), (b'x-envoy-upstream-service-time', b'1511'), (b'Content-Encoding', b'gzip'), (b'vary', b'Accept-Encoding'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Robots-Tag', b'none'), (b'Content-Security-Policy', b"default-src 'none'; frame-ancestors 'none'"), (b'CF-RAY', b'9fcac28c69594637-FRU')])
+2026-05-16 19:34:28,997 [INFO    ] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-16 19:34:28,997 [DEBUG   ] httpcore.http11: receive_response_body.started request=<Request [b'POST']>
+2026-05-16 19:34:28,998 [DEBUG   ] httpcore.http11: receive_response_body.complete
+2026-05-16 19:34:28,998 [DEBUG   ] httpcore.http11: response_closed.started
+2026-05-16 19:34:28,998 [DEBUG   ] httpcore.http11: response_closed.complete
+2026-05-16 19:34:28,998 [DEBUG   ] anthropic._base_client: HTTP Response: POST https://api.anthropic.com/v1/messages "200 OK" Headers({'date': 'Sat, 16 May 2026 13:34:29 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'anthropic-ratelimit-input-tokens-limit': '30000', 'anthropic-ratelimit-input-tokens-remaining': '29000', 'anthropic-ratelimit-input-tokens-reset': '2026-05-16T13:34:29Z', 'anthropic-ratelimit-output-tokens-limit': '8000', 'anthropic-ratelimit-output-tokens-remaining': '8000', 'anthropic-ratelimit-output-tokens-reset': '2026-05-16T13:34:29Z', 'anthropic-ratelimit-requests-limit': '50', 'anthropic-ratelimit-requests-remaining': '49', 'anthropic-ratelimit-requests-reset': '2026-05-16T13:34:28Z', 'anthropic-ratelimit-tokens-limit': '38000', 'anthropic-ratelimit-tokens-remaining': '37000', 'anthropic-ratelimit-tokens-reset': '2026-05-16T13:34:29Z', 'request-id': 'req_011Cb6LMzDBggh6QcDErrKqk', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'anthropic-organization-id': 'e7ddc705-7c58-4a93-aa44-885d49ea18ee', 'traceresponse': '00-4efd9506e1ddc291d62ad7ec12a7161a-7f62b03fe3aecb13-01', 'server': 'cloudflare', 'x-envoy-upstream-service-time': '1511', 'content-encoding': 'gzip', 'vary': 'Accept-Encoding', 'cf-cache-status': 'DYNAMIC', 'x-robots-tag': 'none', 'content-security-policy': "default-src 'none'; frame-ancestors 'none'", 'cf-ray': '9fcac28c69594637-FRU'})
+2026-05-16 19:34:28,998 [DEBUG   ] anthropic._base_client: request_id: req_011Cb6LMzDBggh6QcDErrKqk
+2026-05-16 19:34:28,998 [DEBUG   ] core.claude: Claude response — stop_reason=tool_use, in=1104 out=75 tokens
+2026-05-16 19:34:28,998 [DEBUG   ] core.claude: Claude raw response:
+{
+  "id": "msg_019koMGXAEizb4bzos8boFfW",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "I'll start by reading the document to understand its current content.",
+      "type": "text"
+    },
+    {
+      "id": "toolu_01LE6WYzxZBKfhWxo9Upa7Ly",
+      "caller": {
+        "type": "direct"
+      },
+      "input": {
+        "doc_id": "financials.docx"
+      },
+      "name": "read_doc_contents",
+      "type": "tool_use"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1104,
+    "output_tokens": 75,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  },
+  "stop_details": null
+}
+2026-05-16 19:34:28,998 [INFO    ] core.chat: Claude requested tools: ['read_doc_contents']
+2026-05-16 19:34:28,998 [INFO    ] core.tools: Executing tool: read_doc_contents | input: {"doc_id": "financials.docx"}
+2026-05-16 19:34:29,000 [DEBUG   ] mcp_client: list_tools → ['read_doc_contents', 'edit_document']
+2026-05-16 19:34:29,000 [DEBUG   ] mcp_client: call_tool: read_doc_contents | input: {'doc_id': 'financials.docx'}
+2026-05-16 19:34:29,002 [INFO    ] core.tools: Tool read_doc_contents → success | preview: ["These financials outline the project's budget and expenditures."]
+2026-05-16 19:34:29,003 [DEBUG   ] core.chat: Sending to Claude (turn 2)
+2026-05-16 19:34:29,004 [DEBUG   ] mcp_client: list_tools → ['read_doc_contents', 'edit_document']
+2026-05-16 19:34:29,005 [DEBUG   ] core.tools: Available tools (2): ['read_doc_contents', 'edit_document']
+2026-05-16 19:34:29,005 [DEBUG   ] core.claude: Calling Claude — model=claude-sonnet-4-6, messages=5, tools=2, thinking=False
+2026-05-16 19:34:29,005 [DEBUG   ] core.claude: Claude raw request:
+{
+  "model": "claude-sonnet-4-6",
+  "max_tokens": 8000,
+  "messages": [
+    {
+      "role": "user",
+      "content": "\n        The user has a question:\n        <query>\n        @deposition.md\n        </query>\n\n        The following context may be useful in answering their question:\n        <context>\n        \n<document id=\"deposition.md\">\nThis deposition covers the testimony of Angela Smith, P.E.\n</document>\n\n        </context>\n\n        Note the user's query might contain references to documents like \"@report.docx\". The \"@\" is only\n        included as a way of mentioning the doc. The actual name of the document would be \"report.docx\".\n        If the document content is included in this prompt, you don't need to use an additional tool to read the document.\n        Answer the user's question directly and concisely. Start with the exact information they need.\n        Don't refer to or mention the provided context in any way - just use it to inform your answer.\n        "
+    },
+    {
+      "role": "assistant",
+      "content": [
+        "TextBlock(citations=None, text='The deposition covers the testimony of **Angela Smith, P.E.**', type='text')"
+      ]
+    },
+    {
+      "role": "user",
+      "content": "\n        Your goal is to reformat a document to be written with markdown syntax.\n\n        The id of the document you need to reformat is:\n        <document_id>\n        financials.docx\n        </document_id>\n\n        Add in headers, bullet points, tables, etc as necessary. Feel free to add in structure.\n        Use the 'edit_document' tool to edit the document. After the document has been reformatted...\n        "
+    },
+    {
+      "role": "assistant",
+      "content": [
+        "TextBlock(citations=None, text=\"I'll start by reading the document to understand its current content.\", type='text')",
+        "ToolUseBlock(id='toolu_01LE6WYzxZBKfhWxo9Upa7Ly', caller=DirectCaller(type='direct'), input={'doc_id': 'financials.docx'}, name='read_doc_contents', type='tool_use')"
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_01LE6WYzxZBKfhWxo9Upa7Ly",
+          "type": "tool_result",
+          "content": "[\"These financials outline the project's budget and expenditures.\"]",
+          "is_error": false
+        }
+      ]
+    }
+  ],
+  "temperature": 1.0,
+  "stop_sequences": [],
+  "tools": [
+    {
+      "name": "read_doc_contents",
+      "description": "Read the contents of a document and return it as a string.",
+      "input_schema": {
+        "properties": {
+          "doc_id": {
+            "description": "Id of the document to read",
+            "title": "Doc Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "doc_id"
+        ],
+        "title": "read_documentArguments",
+        "type": "object"
+      }
+    },
+    {
+      "name": "edit_document",
+      "description": "Edit a document by replacing a string in the documents content with a new string.",
+      "input_schema": {
+        "properties": {
+          "doc_id": {
+            "description": "Id of the document that will be edited",
+            "title": "Doc Id",
+            "type": "string"
+          },
+          "old_str": {
+            "description": "The text to replace. Must match exactly, including whitespace.",
+            "title": "Old Str",
+            "type": "string"
+          },
+          "new_str": {
+            "description": "The new text to insert in place of the old text.",
+            "title": "New Str",
+            "type": "string"
+          }
+        },
+        "required": [
+          "doc_id",
+          "old_str",
+          "new_str"
+        ],
+        "title": "edit_documentArguments",
+        "type": "object"
+      }
+    }
+  ]
+}
+2026-05-16 19:34:29,007 [DEBUG   ] anthropic._base_client: Request options: {'method': 'post', 'url': '/v1/messages', 'timeout': Timeout(connect=5.0, read=600, write=600, pool=600), 'files': None, 'idempotency_key': 'stainless-python-retry-391fb74d-bc29-4a41-a03f-6ce6b7bd80a6', 'content': None, 'json_data': {'max_tokens': 8000, 'messages': [{'role': 'user', 'content': '\n        The user has a question:\n        <query>\n        @deposition.md\n        </query>\n\n        The following context may be useful in answering their question:\n        <context>\n        \n<document id="deposition.md">\nThis deposition covers the testimony of Angela Smith, P.E.\n</document>\n\n        </context>\n\n        Note the user\'s query might contain references to documents like "@report.docx". The "@" is only\n        included as a way of mentioning the doc. The actual name of the document would be "report.docx".\n        If the document content is included in this prompt, you don\'t need to use an additional tool to read the document.\n        Answer the user\'s question directly and concisely. Start with the exact information they need.\n        Don\'t refer to or mention the provided context in any way - just use it to inform your answer.\n        '}, {'role': 'assistant', 'content': [{'text': 'The deposition covers the testimony of **Angela Smith, P.E.**', 'type': 'text'}]}, {'role': 'user', 'content': "\n        Your goal is to reformat a document to be written with markdown syntax.\n\n        The id of the document you need to reformat is:\n        <document_id>\n        financials.docx\n        </document_id>\n\n        Add in headers, bullet points, tables, etc as necessary. Feel free to add in structure.\n        Use the 'edit_document' tool to edit the document. After the document has been reformatted...\n        "}, {'role': 'assistant', 'content': [{'text': "I'll start by reading the document to understand its current content.", 'type': 'text'}, {'id': 'toolu_01LE6WYzxZBKfhWxo9Upa7Ly', 'caller': {'type': 'direct'}, 'input': {'doc_id': 'financials.docx'}, 'name': 'read_doc_contents', 'type': 'tool_use'}]}, {'role': 'user', 'content': [{'tool_use_id': 'toolu_01LE6WYzxZBKfhWxo9Upa7Ly', 'type': 'tool_result', 'content': '["These financials outline the project\'s budget and expenditures."]', 'is_error': False}]}], 'model': 'claude-sonnet-4-6', 'stop_sequences': [], 'temperature': 1.0, 'tools': [{'name': 'read_doc_contents', 'description': 'Read the contents of a document and return it as a string.', 'input_schema': {'properties': {'doc_id': {'description': 'Id of the document to read', 'title': 'Doc Id', 'type': 'string'}}, 'required': ['doc_id'], 'title': 'read_documentArguments', 'type': 'object'}}, {'name': 'edit_document', 'description': 'Edit a document by replacing a string in the documents content with a new string.', 'input_schema': {'properties': {'doc_id': {'description': 'Id of the document that will be edited', 'title': 'Doc Id', 'type': 'string'}, 'old_str': {'description': 'The text to replace. Must match exactly, including whitespace.', 'title': 'Old Str', 'type': 'string'}, 'new_str': {'description': 'The new text to insert in place of the old text.', 'title': 'New Str', 'type': 'string'}}, 'required': ['doc_id', 'old_str', 'new_str'], 'title': 'edit_documentArguments', 'type': 'object'}}]}}
+2026-05-16 19:34:29,008 [DEBUG   ] anthropic._base_client: Sending HTTP Request: POST https://api.anthropic.com/v1/messages
+2026-05-16 19:34:29,008 [DEBUG   ] httpcore.http11: send_request_headers.started request=<Request [b'POST']>
+2026-05-16 19:34:29,008 [DEBUG   ] httpcore.http11: send_request_headers.complete
+2026-05-16 19:34:29,008 [DEBUG   ] httpcore.http11: send_request_body.started request=<Request [b'POST']>
+2026-05-16 19:34:29,008 [DEBUG   ] httpcore.http11: send_request_body.complete
+2026-05-16 19:34:29,008 [DEBUG   ] httpcore.http11: receive_response_headers.started request=<Request [b'POST']>
+2026-05-16 19:34:33,605 [DEBUG   ] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sat, 16 May 2026 13:34:33 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'anthropic-ratelimit-input-tokens-limit', b'30000'), (b'anthropic-ratelimit-input-tokens-remaining', b'29000'), (b'anthropic-ratelimit-input-tokens-reset', b'2026-05-16T13:34:32Z'), (b'anthropic-ratelimit-output-tokens-limit', b'8000'), (b'anthropic-ratelimit-output-tokens-remaining', b'8000'), (b'anthropic-ratelimit-output-tokens-reset', b'2026-05-16T13:34:35Z'), (b'anthropic-ratelimit-requests-limit', b'50'), (b'anthropic-ratelimit-requests-remaining', b'49'), (b'anthropic-ratelimit-requests-reset', b'2026-05-16T13:34:30Z'), (b'anthropic-ratelimit-tokens-limit', b'38000'), (b'anthropic-ratelimit-tokens-remaining', b'37000'), (b'anthropic-ratelimit-tokens-reset', b'2026-05-16T13:34:32Z'), (b'request-id', b'req_011Cb6LN7wGoHt3zpG953bro'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'anthropic-organization-id', b'e7ddc705-7c58-4a93-aa44-885d49ea18ee'), (b'traceresponse', b'00-e8b649f7d79e55b53ae1b1a752a6cad6-03370422a54a1699-01'), (b'Server', b'cloudflare'), (b'x-envoy-upstream-service-time', b'4229'), (b'Content-Encoding', b'gzip'), (b'vary', b'Accept-Encoding'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Robots-Tag', b'none'), (b'Content-Security-Policy', b"default-src 'none'; frame-ancestors 'none'"), (b'CF-RAY', b'9fcac297a8474637-FRU')])
+2026-05-16 19:34:33,606 [INFO    ] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-16 19:34:33,606 [DEBUG   ] httpcore.http11: receive_response_body.started request=<Request [b'POST']>
+2026-05-16 19:34:33,607 [DEBUG   ] httpcore.http11: receive_response_body.complete
+2026-05-16 19:34:33,607 [DEBUG   ] httpcore.http11: response_closed.started
+2026-05-16 19:34:33,607 [DEBUG   ] httpcore.http11: response_closed.complete
+2026-05-16 19:34:33,607 [DEBUG   ] anthropic._base_client: HTTP Response: POST https://api.anthropic.com/v1/messages "200 OK" Headers({'date': 'Sat, 16 May 2026 13:34:33 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'anthropic-ratelimit-input-tokens-limit': '30000', 'anthropic-ratelimit-input-tokens-remaining': '29000', 'anthropic-ratelimit-input-tokens-reset': '2026-05-16T13:34:32Z', 'anthropic-ratelimit-output-tokens-limit': '8000', 'anthropic-ratelimit-output-tokens-remaining': '8000', 'anthropic-ratelimit-output-tokens-reset': '2026-05-16T13:34:35Z', 'anthropic-ratelimit-requests-limit': '50', 'anthropic-ratelimit-requests-remaining': '49', 'anthropic-ratelimit-requests-reset': '2026-05-16T13:34:30Z', 'anthropic-ratelimit-tokens-limit': '38000', 'anthropic-ratelimit-tokens-remaining': '37000', 'anthropic-ratelimit-tokens-reset': '2026-05-16T13:34:32Z', 'request-id': 'req_011Cb6LN7wGoHt3zpG953bro', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'anthropic-organization-id': 'e7ddc705-7c58-4a93-aa44-885d49ea18ee', 'traceresponse': '00-e8b649f7d79e55b53ae1b1a752a6cad6-03370422a54a1699-01', 'server': 'cloudflare', 'x-envoy-upstream-service-time': '4229', 'content-encoding': 'gzip', 'vary': 'Accept-Encoding', 'cf-cache-status': 'DYNAMIC', 'x-robots-tag': 'none', 'content-security-policy': "default-src 'none'; frame-ancestors 'none'", 'cf-ray': '9fcac297a8474637-FRU'})
+2026-05-16 19:34:33,607 [DEBUG   ] anthropic._base_client: request_id: req_011Cb6LN7wGoHt3zpG953bro
+2026-05-16 19:34:33,608 [DEBUG   ] core.claude: Claude response — stop_reason=tool_use, in=1206 out=279 tokens
+2026-05-16 19:34:33,608 [DEBUG   ] core.claude: Claude raw response:
+{
+  "id": "msg_01D2suNnMBAuBg1UXZAaLucc",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The document currently has very minimal content. Let me reformat it with proper markdown structure.",
+      "type": "text"
+    },
+    {
+      "id": "toolu_01JBZiTF9jUg4UiG34RjcN3z",
+      "caller": {
+        "type": "direct"
+      },
+      "input": {
+        "doc_id": "financials.docx",
+        "old_str": "These financials outline the project's budget and expenditures.",
+        "new_str": "# Project Financials\n\n## Overview\nThese financials outline the project's budget and expenditures.\n\n---\n\n## Budget Summary\n\n| Category         | Budgeted Amount | Actual Expenditure | Variance |\n|------------------|-----------------|--------------------|----------|\n| *Add category*   | $0.00           | $0.00              | $0.00    |\n\n---\n\n## Expenditures\n\n- **Category 1:** Description of expenditure\n- **Category 2:** Description of expenditure\n- **Category 3:** Description of expenditure\n\n---\n\n## Notes\n- All figures are in USD.\n- *Add any additional notes or disclaimers here.*\n"
+      },
+      "name": "edit_document",
+      "type": "tool_use"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1206,
+    "output_tokens": 279,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  },
+  "stop_details": null
+}
+2026-05-16 19:34:33,608 [INFO    ] core.chat: Claude requested tools: ['edit_document']
+2026-05-16 19:34:33,608 [INFO    ] core.tools: Executing tool: edit_document | input: {"doc_id": "financials.docx", "old_str": "These financials outline the project's budget and expenditures.", "new_str": "# Project Financials\n\n## Overview\nThese financials outline the project's budget and expenditures.\n\n---\n\n## Budget Summary\n\n| Category         | Budgeted Amount | Actual Ex...
+2026-05-16 19:34:33,612 [DEBUG   ] mcp_client: list_tools → ['read_doc_contents', 'edit_document']
+2026-05-16 19:34:33,612 [DEBUG   ] mcp_client: call_tool: edit_document | input: {'doc_id': 'financials.docx', 'old_str': "These financials outline the project's budget and expenditures.", 'new_str': "# Project Financials\n\n## Overview\nThese financials outline the project's budget and expenditures.\n\n---\n\n## Budget Summary\n\n| Category         | Budgeted Amount | Actual Expenditure | Variance |\n|------------------|-----------------|--------------------|----------|\n| *Add category*   | $0.00           | $0.00              | $0.00    |\n\n---\n\n## Expenditures\n\n- **Category 1:** Description of expenditure\n- **Category 2:** Description of expenditure\n- **Category 3:** Description of expenditure\n\n---\n\n## Notes\n- All figures are in USD.\n- *Add any additional notes or disclaimers here.*\n"}
+2026-05-16 19:34:33,614 [INFO    ] core.tools: Tool edit_document → success | preview: []
+2026-05-16 19:34:33,614 [DEBUG   ] core.chat: Sending to Claude (turn 3)
+2026-05-16 19:34:33,616 [DEBUG   ] mcp_client: list_tools → ['read_doc_contents', 'edit_document']
+2026-05-16 19:34:33,617 [DEBUG   ] core.tools: Available tools (2): ['read_doc_contents', 'edit_document']
+2026-05-16 19:34:33,617 [DEBUG   ] core.claude: Calling Claude — model=claude-sonnet-4-6, messages=7, tools=2, thinking=False
+2026-05-16 19:34:33,617 [DEBUG   ] core.claude: Claude raw request:
+{
+  "model": "claude-sonnet-4-6",
+  "max_tokens": 8000,
+  "messages": [
+    {
+      "role": "user",
+      "content": "\n        The user has a question:\n        <query>\n        @deposition.md\n        </query>\n\n        The following context may be useful in answering their question:\n        <context>\n        \n<document id=\"deposition.md\">\nThis deposition covers the testimony of Angela Smith, P.E.\n</document>\n\n        </context>\n\n        Note the user's query might contain references to documents like \"@report.docx\". The \"@\" is only\n        included as a way of mentioning the doc. The actual name of the document would be \"report.docx\".\n        If the document content is included in this prompt, you don't need to use an additional tool to read the document.\n        Answer the user's question directly and concisely. Start with the exact information they need.\n        Don't refer to or mention the provided context in any way - just use it to inform your answer.\n        "
+    },
+    {
+      "role": "assistant",
+      "content": [
+        "TextBlock(citations=None, text='The deposition covers the testimony of **Angela Smith, P.E.**', type='text')"
+      ]
+    },
+    {
+      "role": "user",
+      "content": "\n        Your goal is to reformat a document to be written with markdown syntax.\n\n        The id of the document you need to reformat is:\n        <document_id>\n        financials.docx\n        </document_id>\n\n        Add in headers, bullet points, tables, etc as necessary. Feel free to add in structure.\n        Use the 'edit_document' tool to edit the document. After the document has been reformatted...\n        "
+    },
+    {
+      "role": "assistant",
+      "content": [
+        "TextBlock(citations=None, text=\"I'll start by reading the document to understand its current content.\", type='text')",
+        "ToolUseBlock(id='toolu_01LE6WYzxZBKfhWxo9Upa7Ly', caller=DirectCaller(type='direct'), input={'doc_id': 'financials.docx'}, name='read_doc_contents', type='tool_use')"
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_01LE6WYzxZBKfhWxo9Upa7Ly",
+          "type": "tool_result",
+          "content": "[\"These financials outline the project's budget and expenditures.\"]",
+          "is_error": false
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": [
+        "TextBlock(citations=None, text='The document currently has very minimal content. Let me reformat it with proper markdown structure.', type='text')",
+        "ToolUseBlock(id='toolu_01JBZiTF9jUg4UiG34RjcN3z', caller=DirectCaller(type='direct'), input={'doc_id': 'financials.docx', 'old_str': \"These financials outline the project's budget and expenditures.\", 'new_str': \"# Project Financials\\n\\n## Overview\\nThese financials outline the project's budget and expenditures.\\n\\n---\\n\\n## Budget Summary\\n\\n| Category         | Budgeted Amount | Actual Expenditure | Variance |\\n|------------------|-----------------|--------------------|----------|\\n| *Add category*   | $0.00           | $0.00              | $0.00    |\\n\\n---\\n\\n## Expenditures\\n\\n- **Category 1:** Description of expenditure\\n- **Category 2:** Description of expenditure\\n- **Category 3:** Description of expenditure\\n\\n---\\n\\n## Notes\\n- All figures are in USD.\\n- *Add any additional notes or disclaimers here.*\\n\"}, name='edit_document', type='tool_use')"
+      ]
+    },
+    {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_01JBZiTF9jUg4UiG34RjcN3z",
+          "type": "tool_result",
+          "content": "[]",
+          "is_error": false
+        }
+      ]
+    }
+  ],
+  "temperature": 1.0,
+  "stop_sequences": [],
+  "tools": [
+    {
+      "name": "read_doc_contents",
+      "description": "Read the contents of a document and return it as a string.",
+      "input_schema": {
+        "properties": {
+          "doc_id": {
+            "description": "Id of the document to read",
+            "title": "Doc Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "doc_id"
+        ],
+        "title": "read_documentArguments",
+        "type": "object"
+      }
+    },
+    {
+      "name": "edit_document",
+      "description": "Edit a document by replacing a string in the documents content with a new string.",
+      "input_schema": {
+        "properties": {
+          "doc_id": {
+            "description": "Id of the document that will be edited",
+            "title": "Doc Id",
+            "type": "string"
+          },
+          "old_str": {
+            "description": "The text to replace. Must match exactly, including whitespace.",
+            "title": "Old Str",
+            "type": "string"
+          },
+          "new_str": {
+            "description": "The new text to insert in place of the old text.",
+            "title": "New Str",
+            "type": "string"
+          }
+        },
+        "required": [
+          "doc_id",
+          "old_str",
+          "new_str"
+        ],
+        "title": "edit_documentArguments",
+        "type": "object"
+      }
+    }
+  ]
+}
+2026-05-16 19:34:33,619 [DEBUG   ] anthropic._base_client: Request options: {'method': 'post', 'url': '/v1/messages', 'timeout': Timeout(connect=5.0, read=600, write=600, pool=600), 'files': None, 'idempotency_key': 'stainless-python-retry-9350ba47-86e2-43f3-8bd6-7dade42a6aa0', 'content': None, 'json_data': {'max_tokens': 8000, 'messages': [{'role': 'user', 'content': '\n        The user has a question:\n        <query>\n        @deposition.md\n        </query>\n\n        The following context may be useful in answering their question:\n        <context>\n        \n<document id="deposition.md">\nThis deposition covers the testimony of Angela Smith, P.E.\n</document>\n\n        </context>\n\n        Note the user\'s query might contain references to documents like "@report.docx". The "@" is only\n        included as a way of mentioning the doc. The actual name of the document would be "report.docx".\n        If the document content is included in this prompt, you don\'t need to use an additional tool to read the document.\n        Answer the user\'s question directly and concisely. Start with the exact information they need.\n        Don\'t refer to or mention the provided context in any way - just use it to inform your answer.\n        '}, {'role': 'assistant', 'content': [{'text': 'The deposition covers the testimony of **Angela Smith, P.E.**', 'type': 'text'}]}, {'role': 'user', 'content': "\n        Your goal is to reformat a document to be written with markdown syntax.\n\n        The id of the document you need to reformat is:\n        <document_id>\n        financials.docx\n        </document_id>\n\n        Add in headers, bullet points, tables, etc as necessary. Feel free to add in structure.\n        Use the 'edit_document' tool to edit the document. After the document has been reformatted...\n        "}, {'role': 'assistant', 'content': [{'text': "I'll start by reading the document to understand its current content.", 'type': 'text'}, {'id': 'toolu_01LE6WYzxZBKfhWxo9Upa7Ly', 'caller': {'type': 'direct'}, 'input': {'doc_id': 'financials.docx'}, 'name': 'read_doc_contents', 'type': 'tool_use'}]}, {'role': 'user', 'content': [{'tool_use_id': 'toolu_01LE6WYzxZBKfhWxo9Upa7Ly', 'type': 'tool_result', 'content': '["These financials outline the project\'s budget and expenditures."]', 'is_error': False}]}, {'role': 'assistant', 'content': [{'text': 'The document currently has very minimal content. Let me reformat it with proper markdown structure.', 'type': 'text'}, {'id': 'toolu_01JBZiTF9jUg4UiG34RjcN3z', 'caller': {'type': 'direct'}, 'input': {'doc_id': 'financials.docx', 'old_str': "These financials outline the project's budget and expenditures.", 'new_str': "# Project Financials\n\n## Overview\nThese financials outline the project's budget and expenditures.\n\n---\n\n## Budget Summary\n\n| Category         | Budgeted Amount | Actual Expenditure | Variance |\n|------------------|-----------------|--------------------|----------|\n| *Add category*   | $0.00           | $0.00              | $0.00    |\n\n---\n\n## Expenditures\n\n- **Category 1:** Description of expenditure\n- **Category 2:** Description of expenditure\n- **Category 3:** Description of expenditure\n\n---\n\n## Notes\n- All figures are in USD.\n- *Add any additional notes or disclaimers here.*\n"}, 'name': 'edit_document', 'type': 'tool_use'}]}, {'role': 'user', 'content': [{'tool_use_id': 'toolu_01JBZiTF9jUg4UiG34RjcN3z', 'type': 'tool_result', 'content': '[]', 'is_error': False}]}], 'model': 'claude-sonnet-4-6', 'stop_sequences': [], 'temperature': 1.0, 'tools': [{'name': 'read_doc_contents', 'description': 'Read the contents of a document and return it as a string.', 'input_schema': {'properties': {'doc_id': {'description': 'Id of the document to read', 'title': 'Doc Id', 'type': 'string'}}, 'required': ['doc_id'], 'title': 'read_documentArguments', 'type': 'object'}}, {'name': 'edit_document', 'description': 'Edit a document by replacing a string in the documents content with a new string.', 'input_schema': {'properties': {'doc_id': {'description': 'Id of the document that will be edited', 'title': 'Doc Id', 'type': 'string'}, 'old_str': {'description': 'The text to replace. Must match exactly, including whitespace.', 'title': 'Old Str', 'type': 'string'}, 'new_str': {'description': 'The new text to insert in place of the old text.', 'title': 'New Str', 'type': 'string'}}, 'required': ['doc_id', 'old_str', 'new_str'], 'title': 'edit_documentArguments', 'type': 'object'}}]}}
+2026-05-16 19:34:33,620 [DEBUG   ] anthropic._base_client: Sending HTTP Request: POST https://api.anthropic.com/v1/messages
+2026-05-16 19:34:33,620 [DEBUG   ] httpcore.http11: send_request_headers.started request=<Request [b'POST']>
+2026-05-16 19:34:33,620 [DEBUG   ] httpcore.http11: send_request_headers.complete
+2026-05-16 19:34:33,620 [DEBUG   ] httpcore.http11: send_request_body.started request=<Request [b'POST']>
+2026-05-16 19:34:33,620 [DEBUG   ] httpcore.http11: send_request_body.complete
+2026-05-16 19:34:33,620 [DEBUG   ] httpcore.http11: receive_response_headers.started request=<Request [b'POST']>
+2026-05-16 19:34:37,293 [DEBUG   ] httpcore.http11: receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Date', b'Sat, 16 May 2026 13:34:37 GMT'), (b'Content-Type', b'application/json'), (b'Transfer-Encoding', b'chunked'), (b'Connection', b'keep-alive'), (b'anthropic-ratelimit-input-tokens-limit', b'30000'), (b'anthropic-ratelimit-input-tokens-remaining', b'29000'), (b'anthropic-ratelimit-input-tokens-reset', b'2026-05-16T13:34:36Z'), (b'anthropic-ratelimit-output-tokens-limit', b'8000'), (b'anthropic-ratelimit-output-tokens-remaining', b'8000'), (b'anthropic-ratelimit-output-tokens-reset', b'2026-05-16T13:34:38Z'), (b'anthropic-ratelimit-requests-limit', b'50'), (b'anthropic-ratelimit-requests-remaining', b'49'), (b'anthropic-ratelimit-requests-reset', b'2026-05-16T13:34:35Z'), (b'anthropic-ratelimit-tokens-limit', b'38000'), (b'anthropic-ratelimit-tokens-remaining', b'37000'), (b'anthropic-ratelimit-tokens-reset', b'2026-05-16T13:34:36Z'), (b'request-id', b'req_011Cb6LNTeSShbu5Di4iJjb9'), (b'strict-transport-security', b'max-age=31536000; includeSubDomains; preload'), (b'anthropic-organization-id', b'e7ddc705-7c58-4a93-aa44-885d49ea18ee'), (b'traceresponse', b'00-003f4f0e5aa5b63d54cc4b1594085b39-4670882f62c3a7e7-01'), (b'Server', b'cloudflare'), (b'x-envoy-upstream-service-time', b'3394'), (b'Content-Encoding', b'gzip'), (b'vary', b'Accept-Encoding'), (b'cf-cache-status', b'DYNAMIC'), (b'X-Robots-Tag', b'none'), (b'Content-Security-Policy', b"default-src 'none'; frame-ancestors 'none'"), (b'CF-RAY', b'9fcac2b48c9d4637-FRU')])
+2026-05-16 19:34:37,294 [INFO    ] httpx: HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-05-16 19:34:37,294 [DEBUG   ] httpcore.http11: receive_response_body.started request=<Request [b'POST']>
+2026-05-16 19:34:37,295 [DEBUG   ] httpcore.http11: receive_response_body.complete
+2026-05-16 19:34:37,295 [DEBUG   ] httpcore.http11: response_closed.started
+2026-05-16 19:34:37,295 [DEBUG   ] httpcore.http11: response_closed.complete
+2026-05-16 19:34:37,295 [DEBUG   ] anthropic._base_client: HTTP Response: POST https://api.anthropic.com/v1/messages "200 OK" Headers({'date': 'Sat, 16 May 2026 13:34:37 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'anthropic-ratelimit-input-tokens-limit': '30000', 'anthropic-ratelimit-input-tokens-remaining': '29000', 'anthropic-ratelimit-input-tokens-reset': '2026-05-16T13:34:36Z', 'anthropic-ratelimit-output-tokens-limit': '8000', 'anthropic-ratelimit-output-tokens-remaining': '8000', 'anthropic-ratelimit-output-tokens-reset': '2026-05-16T13:34:38Z', 'anthropic-ratelimit-requests-limit': '50', 'anthropic-ratelimit-requests-remaining': '49', 'anthropic-ratelimit-requests-reset': '2026-05-16T13:34:35Z', 'anthropic-ratelimit-tokens-limit': '38000', 'anthropic-ratelimit-tokens-remaining': '37000', 'anthropic-ratelimit-tokens-reset': '2026-05-16T13:34:36Z', 'request-id': 'req_011Cb6LNTeSShbu5Di4iJjb9', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'anthropic-organization-id': 'e7ddc705-7c58-4a93-aa44-885d49ea18ee', 'traceresponse': '00-003f4f0e5aa5b63d54cc4b1594085b39-4670882f62c3a7e7-01', 'server': 'cloudflare', 'x-envoy-upstream-service-time': '3394', 'content-encoding': 'gzip', 'vary': 'Accept-Encoding', 'cf-cache-status': 'DYNAMIC', 'x-robots-tag': 'none', 'content-security-policy': "default-src 'none'; frame-ancestors 'none'", 'cf-ray': '9fcac2b48c9d4637-FRU'})
+2026-05-16 19:34:37,295 [DEBUG   ] anthropic._base_client: request_id: req_011Cb6LNTeSShbu5Di4iJjb9
+2026-05-16 19:34:37,296 [DEBUG   ] core.claude: Claude response — stop_reason=end_turn, in=1498 out=147 tokens
+2026-05-16 19:34:37,296 [DEBUG   ] core.claude: Claude raw response:
+{
+  "id": "msg_015uY41FucekTVwbps3M7aXS",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The document has been reformatted with the following markdown structure:\n\n- **Header** — A clear top-level title (`# Project Financials`)\n- **Overview section** — Preserves the original introductory sentence\n- **Budget Summary table** — A placeholder table with columns for Category, Budgeted Amount, Actual Expenditure, and Variance\n- **Expenditures section** — Bullet points for listing individual expenditure items\n- **Notes section** — A place for additional context or disclaimers\n- **Horizontal rules** — Used to visually separate sections\n\nYou can now fill in the table and bullet points with real financial data!",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1498,
+    "output_tokens": 147,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  },
+  "stop_details": null
+}
+2026-05-16 19:34:37,296 [INFO    ] core.chat: Chat complete — stop_reason=end_turn, turns=3
+2026-05-16 19:34:55,269 [DEBUG   ] httpcore.connection: close.started
+2026-05-16 19:34:55,270 [DEBUG   ] httpcore.connection: close.complete
